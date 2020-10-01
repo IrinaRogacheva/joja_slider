@@ -15,7 +15,7 @@ let slidesList = {
 };
 
 let slide = {
-    background: background,,
+    background: background,
     elements: Array<element>,
 };
 
