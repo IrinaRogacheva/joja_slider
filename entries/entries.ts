@@ -1,3 +1,10 @@
+export {
+    presentation, 
+    slidesList,
+    slide,
+    currentState
+}
+
 type text = {
     textString: String,
     textSize: Number,
@@ -21,7 +28,7 @@ type imageElement = {
 
 type background = {
     image: imageElement,
-    backgroundColor: Number
+    backgroundColor: string
 };
 
 type primitive = {
@@ -39,7 +46,7 @@ type element = {
 type currentState = {
     currentSlide: Number,
     selectedElements: Array<element>,
-    currentColor: Number,
+    currentColor: string,
     currentTextSize: Number,
     currentTextFont: String,
 }
@@ -54,7 +61,7 @@ type slidesList = {
 };
 
 type presentation = {
-    name: text, 
+    name: string,
     slidesList: slidesList,
     currentState: currentState, 
   };
