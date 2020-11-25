@@ -1,50 +1,65 @@
-import {presentation, slidesList, slide} from '../entries/entries'
+import {Presentation, Slide} from '../entries/entries'
+import { empty } from 'uuidv4'
+
+function createPresentation(): Presentation {
+    const presentation: Presentation = {
+        name: 'New presentation',
+        slidesList: [{
+            background: {backgroundColor: '#fff', image: null},
+            elements: [],
+            id: empty()
+        }],
+        currentState: {
+            currentSlide: {
+                background: {backgroundColor: '#fff', image: null},
+                elements: [],
+                id: empty()
+            },
+            selectedElements: [],
+            currentColor: '#fff',
+            currentTextSize: 14,
+            currentTextFont: 'Arial',
+        }
+    }
+    return presentation
+}
+
+function openLocalPresentation(jsonFile: string): Presentation {
+    const presentation: Presentation = JSON.parse(jsonFile)
+    return presentation
+}
+
+function openCloudPresentation(urlFile: string): Presentation {
+    let presentation: Presentation
+    return presentation
+}
+
+function exportPresentation(presentation: Presentation): string {
+    let pdfFile: string
+    return pdfFile
+}
+
+function saveLocalPresentation(presentation: Presentation): string {
+    const jsonFile = JSON.stringify(presentation) 
+    return jsonFile
+}
+
+function saveCloudPresentation(presentation: Presentation): string {
+    let urlFile: string
+    return urlFile
+}
+
+function previewPresentation(presentation: Presentation): Array<Slide> {
+    let slideshow: Array<Slide> 
+    return slideshow
+}
 
 export {
     createPresentation,
     openLocalPresentation,
     openCloudPresentation,
-    exportPresentation,
     saveLocalPresentation,
     saveCloudPresentation,
+    exportPresentation,
     previewPresentation
-}
-
-function createPresentation(): presentation {
-    let present: presentation
-    present.name = 'New presentation'
-    let slide: slide
-    slide.background.backgroundColor = '#fff'
-    slide.elements = []
-    present.slidesList.slides[0] = slide
-    present.currentState.currentSlide = 0
-    present.currentState.currentColor = '#000'
-    present.currentState.currentTextSize = 14
-    present.currentState.currentTextFont = 'Ariel'
-    present.currentState.selectedElements = []
-    return present
-}
-
-function openLocalPresentation(jsonFile: string): presentation {
-    return presentation;
-}
-
-function openCloudPresentation(urlFile: string): presentation {
-    return presentation;
-}
-
-function exportPresentation(presentation: presentation): string {
-    return pdfFile;
-}
-
-function saveLocalPresentation(presentation: presentation): string {
-    return jsonFile;
-}
-
-function saveCloudPresentation(presentation: presentation): string {
-    return urlFile;
-}
-
-function previewPresentation(presentation: string): slidesList {
-    return slidesList;
 }
