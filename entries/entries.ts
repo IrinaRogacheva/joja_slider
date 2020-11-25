@@ -1,6 +1,4 @@
-export {
-    Presentation, Slide, CurrentState, Size, Text, Element, Position, Primitive
-}
+export {Presentation, Slide, CurrentState, Size, Text, Element, Position, Primitive}
 
 type Text = {
     textString: string,
