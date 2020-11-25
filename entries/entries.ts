@@ -1,67 +1,74 @@
 export {
-    presentation, 
-    slidesList,
-    slide,
-    currentState
+    Presentation, Slide, CurrentState, Size, Text, Element, Position, Primitive
 }
 
-type text = {
-    textString: String,
-    textSize: Number,
-    textFont: String,
-    textColor: String
+type Text = {
+    textString: string,
+    textSize: number,
+    textFont: string,
+    textColor: string
 };
 
-type position = {
-    x: Number,
-    y: Number
+type Position = {
+    x: number,
+    y: number
 };
 
-type size = {
-    width: Number,
-    height: Number
+type Size = {
+    width: number,
+    height: number
 }
 
-type imageElement = {
-    imageUrl: String,
+type ImageElement = {
+    imageUrl: string,
 };
 
-type background = {
-    image: imageElement,
+type Background = {
+    image: ImageElement,
     backgroundColor: string
 };
 
-type primitive = {
-    primitiveType: ('circle'|'rectangle'|'triangle'|'polygon'|'line'),
-    primitiveBorderColor: String,
-    primitiveFillColor: String
+type PrimitiveType = 
+    'circle'|
+    'rectangle'|
+    'triangle'|
+    'polygon'|
+    'line'
+
+
+type Primitive = {
+    primitiveType: PrimitiveType,
+    primitiveBorderColor: string,
+    primitiveFillColor: string
 };
 
-type element = {
-    elementPosition: position,
-    elementSize: size,
-    elementType: (text|imageElement|primitive)
+type ElementType = 'text'|'primitive'|'imageElement'
+
+type Element = {
+    elementPosition: Position,
+    elementSize: Size,
+    //elementType: elementType,
+    primitive: Primitive,
+    text: Text,
+    imageElement: ImageElement
 };
 
-type currentState = {
-    currentSlide: Number,
-    selectedElements: Array<element>,
+type CurrentState = {
+    currentSlide: Slide,
+    selectedElements: Array<Element>,
     currentColor: string,
-    currentTextSize: Number,
-    currentTextFont: String,
+    currentTextSize: number,
+    currentTextFont: string,
 }
 
-type slide = {
-    background: background,
-    elements: Array<element>
+type Slide = {
+    background: Background,
+    elements: Array<Element>
+    id: string
 };
 
-type slidesList = {
-    slides: Array<slide>
-};
-
-type presentation = {
-    name: string,
-    slidesList: slidesList,
-    currentState: currentState, 
+type Presentation = {
+    name: string, 
+    slidesList: Array<Slide>,
+    currentState: CurrentState, 
   };
