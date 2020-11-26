@@ -1,4 +1,4 @@
-import {Presentation, Element, Slide, Size} from '../entries/entries'
+import {Presentation, Element, Slide, Size, Position} from '../entries/entries'
        
 function addElement(presentation: Presentation, element: Element): Presentation {
     const copySlidesList: Array<Slide> = presentation.slidesList.slice()
@@ -63,57 +63,162 @@ function moveElement(presentation: Presentation, elementIndex: number, position:
     }
 }
 
-function changeElementSize(presentation: Presentation, slideIndex: number, elementIndex: number, elementSize: Size): Presentation {
-    presentation.slidesList[slideIndex].elements[elementIndex].elementSize = elementSize 
-    presentation.currentState.currentSlide.elements[elementIndex].elementSize = elementSize 
-    return presentation
+function changeElementSize(presentation: Presentation, elementIndex: number, elementSize: Size): Presentation {
+    const copySlidesList: Array<Slide> = presentation.slidesList.slice()
+    const currentSlide: Slide = {...presentation.currentState.currentSlide}
+    currentSlide.elements[elementIndex].elementSize = elementSize
+    for (let i = 0; i < copySlidesList.length; i++) {
+        if(copySlidesList[i].id === currentSlide.id)
+        {
+            copySlidesList[i] = currentSlide
+            break
+        }
+    }
+    return {
+        ...presentation,
+        slidesList: copySlidesList,
+        currentState: {
+            ...presentation.currentState,
+            currentSlide: currentSlide
+        }
+    }    
 }
 
-function changeTextSize(presentation: Presentation, slideIndex: number, elementIndex: number, textSize: number): Presentation {
-    presentation.currentState.currentSlide.elements[elementIndex].text.textSize = textSize
-    presentation.slidesList[slideIndex].elements[elementIndex].text.textSize = textSize
-    return presentation
+function changeTextSize(presentation: Presentation, elementIndex: number, textSize: number): Presentation {
+    const copySlidesList: Array<Slide> = presentation.slidesList.slice()
+    const currentSlide: Slide = {...presentation.currentState.currentSlide}
+    currentSlide.elements[elementIndex].text.textSize = textSize
+    for (let i = 0; i < copySlidesList.length; i++) {
+        if(copySlidesList[i].id === currentSlide.id)
+        {
+            copySlidesList[i] = currentSlide
+            break
+        }
+    }
+    return {
+        ...presentation,
+        slidesList: copySlidesList,
+        currentState: {
+            ...presentation.currentState,
+            currentSlide: currentSlide
+        }
+    } 
 }
 
-function changeTextFont(presentation: Presentation, slideIndex: number, elementIndex: number, textFont: string): Presentation {
-    presentation.currentState.currentSlide.elements[elementIndex].text.textFont = textFont
-    presentation.slidesList[slideIndex].elements[elementIndex].text.textFont = textFont
-    return presentation
+function changeTextFont(presentation: Presentation, elementIndex: number, textFont: string): Presentation {
+    const copySlidesList: Array<Slide> = presentation.slidesList.slice()
+    const currentSlide: Slide = {...presentation.currentState.currentSlide}
+    currentSlide.elements[elementIndex].text.textFont = textFont
+    for (let i = 0; i < copySlidesList.length; i++) {
+        if(copySlidesList[i].id === currentSlide.id)
+        {
+            copySlidesList[i] = currentSlide
+            break
+        }
+    }
+    return {
+        ...presentation,
+        slidesList: copySlidesList,
+        currentState: {
+            ...presentation.currentState,
+            currentSlide: currentSlide
+        }
+    } 
 }
 
-function changeBackgroundColor(presentation: Presentation, slideIndex: number, backgroundColor: string): Presentation {
-    presentation.currentState.currentSlide.background.backgroundColor = backgroundColor
-    presentation.slidesList[slideIndex].background.backgroundColor = backgroundColor
-    return presentation
+function changeBackgroundColor(presentation: Presentation, backgroundColor: string): Presentation {
+    const copySlidesList: Array<Slide> = presentation.slidesList.slice()
+    const currentSlide: Slide = {...presentation.currentState.currentSlide}
+    currentSlide.background.backgroundColor = backgroundColor
+    for (let i = 0; i < copySlidesList.length; i++) {
+        if(copySlidesList[i].id === currentSlide.id)
+        {
+            copySlidesList[i] = currentSlide
+            break
+        }
+    }
+    return {
+        ...presentation,
+        slidesList: copySlidesList,
+        currentState: {
+            ...presentation.currentState,
+            currentSlide: currentSlide
+        }
+    } 
 }
 
-function changeTextColor(presentation: Presentation, slideIndex: number, elementIndex: number, textColor: string): Presentation {
-    presentation.currentState.currentSlide.elements[elementIndex].text.textColor = textColor
-    presentation.slidesList[slideIndex].elements[elementIndex].text.textColor = textColor
-    return presentation
+function changeTextColor(presentation: Presentation, elementIndex: number, textColor: string): Presentation {
+    const copySlidesList: Array<Slide> = presentation.slidesList.slice()
+    const currentSlide: Slide = {...presentation.currentState.currentSlide}
+    currentSlide.elements[elementIndex].text.textColor = textColor
+    for (let i = 0; i < copySlidesList.length; i++) {
+        if(copySlidesList[i].id === currentSlide.id)
+        {
+            copySlidesList[i] = currentSlide
+            break
+        }
+    }
+    return {
+        ...presentation,
+        slidesList: copySlidesList,
+        currentState: {
+            ...presentation.currentState,
+            currentSlide: currentSlide
+        }
+    } 
 }
 
-function changePrimitiveBorderColor(presentation: Presentation, slideIndex: number, elementIndex: number, primitiveBorderColor: string): Presentation {
-    presentation.currentState.currentSlide.elements[elementIndex].primitive.primitiveBorderColor = primitiveBorderColor
-    presentation.slidesList[slideIndex].elements[elementIndex].primitive.primitiveBorderColor = primitiveBorderColor
-    return presentation
+function changePrimitiveBorderColor(presentation: Presentation, elementIndex: number, primitiveBorderColor: string): Presentation {
+    const copySlidesList: Array<Slide> = presentation.slidesList.slice()
+    const currentSlide: Slide = {...presentation.currentState.currentSlide}
+    currentSlide.elements[elementIndex].primitive.primitiveBorderColor = primitiveBorderColor
+    for (let i = 0; i < copySlidesList.length; i++) {
+        if(copySlidesList[i].id === currentSlide.id)
+        {
+            copySlidesList[i] = currentSlide
+            break
+        }
+    }
+    return {
+        ...presentation,
+        slidesList: copySlidesList,
+        currentState: {
+            ...presentation.currentState,
+            currentSlide: currentSlide
+        }
+    }
 }
 
-function changePrimitiveFillColor(presentation: Presentation, slideIndex: number, elementIndex: number, primitiveFillColor: string): Presentation {
-    presentation.currentState.currentSlide.elements[elementIndex].primitive.primitiveFillColor = primitiveFillColor
-    presentation.slidesList[slideIndex].elements[elementIndex].primitive.primitiveFillColor = primitiveFillColor
-    return presentation
+function changePrimitiveFillColor(presentation: Presentation, elementIndex: number, primitiveFillColor: string): Presentation {
+    const copySlidesList: Array<Slide> = presentation.slidesList.slice()
+    const currentSlide: Slide = {...presentation.currentState.currentSlide}
+    currentSlide.elements[elementIndex].primitive.primitiveFillColor = primitiveFillColor
+    for (let i = 0; i < copySlidesList.length; i++) {
+        if(copySlidesList[i].id === currentSlide.id)
+        {
+            copySlidesList[i] = currentSlide
+            break
+        }
+    }
+    return {
+        ...presentation,
+        slidesList: copySlidesList,
+        currentState: {
+            ...presentation.currentState,
+            currentSlide: currentSlide
+        }
+    }
 }
 
 export {
     addElement,
     deleteElement,
     moveElement,
-    changeElementSize, 
-    changeBackgroundColor, 
+    changeElementSize,
+    changeTextSize,
+    changeTextFont,
+    changeBackgroundColor,
+    changeTextColor,
     changePrimitiveBorderColor,
-    changePrimitiveFillColor, 
-    changeTextColor, 
-    changeTextFont, 
-    changeTextSize
+    changePrimitiveFillColor
 }
