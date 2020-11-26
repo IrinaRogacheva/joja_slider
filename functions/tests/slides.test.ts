@@ -5,13 +5,13 @@ test('addSlide function', () => {
     const presentationBefore: Presentation = {
         name: 'New presentation',
         slidesList: [{
-            background: {backgroundColor: '#fff', image: null},
+            background: '#fff',
             elements: [],
             id: '0'
         }],
         currentState: {
             currentSlide: {
-                background: {backgroundColor: '#fff', image: null},
+                background: '#fff',
                 elements: [],
                 id: '0'
             },
@@ -25,19 +25,19 @@ test('addSlide function', () => {
         name: 'New presentation',
         slidesList: [
             {
-                background: {backgroundColor: '#fff', image: null},
+                background: '#fff',
                 elements: [],
                 id: '0'
             },
             {
-                background: {backgroundColor: '#fff', image: null},
+                background: '#fff',
                 elements: [],
                 id: NEW_SLIDE_ID
             }
         ],
         currentState: {
             currentSlide: {
-                background: {backgroundColor: '#fff', image: null},
+                background: '#fff',
                 elements: [],
                 id: NEW_SLIDE_ID
             },
@@ -57,19 +57,19 @@ test('showSlide function', () => {
         name: 'New presentation',
         slidesList: [
             {
-                background: {backgroundColor: '#fff', image: undefined},
+                background: '#fff',
                 elements: [],
                 id: '0'
             },
             {
-                background: {backgroundColor: '#fff', image: undefined},
+                background: '#fff',
                 elements: [],
                 id: '1'
             }
         ],
         currentState: {
             currentSlide: {
-                background: {backgroundColor: '#fff', image: undefined},
+                background: '#fff',
                 elements: [],
                 id: '0'
             },
@@ -83,19 +83,19 @@ test('showSlide function', () => {
         name: 'New presentation',
         slidesList: [
             {
-                background: {backgroundColor: '#fff', image: undefined},
+                background: '#fff',
                 elements: [],
                 id: '0'
             },
             {
-                background: {backgroundColor: '#fff', image: undefined},
+                background: '#fff',
                 elements: [],
                 id: '1'
             }
         ],
         currentState: {
             currentSlide: {
-                background: {backgroundColor: '#fff', image: undefined},
+                background: '#fff',
                 elements: [],
                 id: '1'
             },
@@ -116,29 +116,29 @@ test('moveSlide function', () => {
         name: 'New presentation',
         slidesList: [
             {
-                background: {backgroundColor: '#fff', image: null},
+                background: '#fff',
                 elements: [],
                 id: '0'
             }, 
             {
-                background: {backgroundColor: '#fff', image: null},
+                background: '#fff',
                 elements: [],
                 id: '1'
             },
             {
-                background: {backgroundColor: '#fff', image: null},
+                background: '#fff',
                 elements: [],
                 id: '2'
             },
             {
-                background: {backgroundColor: '#fff', image: null},
+                background: '#fff',
                 elements: [],
                 id: '3'
             }
         ],
         currentState: {
             currentSlide: {
-                background: {backgroundColor: '#fff', image: null},
+                background: '#fff',
                 elements: [],
                 id: '0'
             },
@@ -152,29 +152,29 @@ test('moveSlide function', () => {
         name: 'New presentation',
         slidesList: [
             {
-                background: {backgroundColor: '#fff', image: null},
+                background: '#fff',
                 elements: [],
                 id: '0'
             },
             {
-                background: {backgroundColor: '#fff', image: null},
+                background: '#fff',
                 elements: [],
                 id: '2'
             },
             {
-                background: {backgroundColor: '#fff', image: null},
+                background: '#fff',
                 elements: [],
                 id: '3'
             },
             {
-                background: {backgroundColor: '#fff', image: null},
+                background: '#fff',
                 elements: [],
                 id: '1'
             }
         ],
         currentState: {
             currentSlide: {
-                background: {backgroundColor: '#fff', image: null},
+                background: '#fff',
                 elements: [],
                 id: '0'
             },
@@ -192,19 +192,19 @@ test('deleteSlide function', () => {
         name: 'New presentation',
         slidesList: [
             {
-                background: {backgroundColor: '#fff', image: undefined},
+                background: '#fff',
                 elements: [],
                 id: '0'
             },
             {
-                background: {backgroundColor: '#fff', image: undefined},
+                background: '#fff',
                 elements: [],
                 id: '1'
             }
         ],
         currentState: {
             currentSlide: {
-                background: {backgroundColor: '#fff', image: undefined},
+                background: '#fff',
                 elements: [],
                 id: '0'
             },
@@ -218,14 +218,14 @@ test('deleteSlide function', () => {
         name: 'New presentation',
         slidesList: [
             {
-                background: {backgroundColor: '#fff', image: undefined},
+                background: '#fff',
                 elements: [],
                 id: '1'
             }
         ],
         currentState: {
             currentSlide: {
-                background: {backgroundColor: '#fff', image: undefined},
+                background: '#fff',
                 elements: [],
                 id: '1'
             },

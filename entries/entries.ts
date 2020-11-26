@@ -21,18 +21,9 @@ type ImageElement = {
     imageUrl: string,
 };
 
-type Background = {
-    image: ImageElement,
-    backgroundColor: string
-};
+type Background = ImageElement|string;
 
-type PrimitiveType = 
-    'circle'|
-    'rectangle'|
-    'triangle'|
-    'polygon'|
-    'line'
-
+type PrimitiveType = 'circle'|'rectangle'|'triangle'|'polygon'|'line'
 
 type Primitive = {
     primitiveType: PrimitiveType,
@@ -40,15 +31,12 @@ type Primitive = {
     primitiveFillColor: string
 };
 
-type ElementType = 'text'|'primitive'|'imageElement'
-
 type Element = {
     elementPosition: Position,
     elementSize: Size,
-    //elementType: elementType,
-    primitive: Primitive,
-    text: Text,
-    imageElement: ImageElement
+    primitive: Primitive|null,
+    text: Text|null,
+    imageElement: ImageElement|null
 };
 
 type CurrentState = {

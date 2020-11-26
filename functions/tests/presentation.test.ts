@@ -5,13 +5,13 @@ test('createPresentation function', () => {
     const presentation: Presentation = {
         name: 'New presentation',
         slidesList: [{
-            background: {backgroundColor: '#fff', image: null},
+            background: '#fff',
             elements: [],
             id: '00000000-0000-0000-0000-000000000000'
         }],
         currentState: {
             currentSlide: {
-                background: {backgroundColor: '#fff', image: null},
+                background: '#fff',
                 elements: [],
                 id: '00000000-0000-0000-0000-000000000000'
             },
