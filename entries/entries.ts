@@ -32,6 +32,7 @@ type Primitive = {
 };
 
 type Element = {
+    id: string,
     elementPosition: Position,
     elementSize: Size,
     primitive: Primitive|null,
@@ -41,7 +42,7 @@ type Element = {
 
 type CurrentState = {
     currentSlide: Slide,
-    selectedElements: Array<Element>,
+    selectedElements: Array<string>,
     currentColor: string,
     currentTextSize: number,
     currentTextFont: string,
