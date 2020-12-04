@@ -39,16 +39,6 @@ function changeTextSize(presentation: Presentation, elementIndex: number, textSi
     }
 }
 
-function changeCurrTextSize(presentation: Presentation, textSize: number): Presentation {
-    return {
-        ...presentation,
-        currentState: {
-            ...presentation.currentState,
-            currentTextSize: textSize
-        }
-    } 
-}
-
 function changeTextFont(presentation: Presentation, elementIndex: number, textFont: string): Presentation {
     if (presentation.currentState.currentSlide.elements[elementIndex].text === null) {
         return
@@ -87,15 +77,6 @@ function changeTextFont(presentation: Presentation, elementIndex: number, textFo
     }
 }
 
-function changeCurrentTextFont(presentation: Presentation, textFont: string): Presentation {
-    return {
-        ...presentation,
-        currentState: {
-            ...presentation.currentState,
-            currentTextFont: textFont
-        }
-    }
-}
 function changeTextColor(presentation: Presentation, elementIndex: number, textColor: string): Presentation {
     if (presentation.currentState.currentSlide.elements[elementIndex].text === null) {
         return
@@ -134,21 +115,8 @@ function changeTextColor(presentation: Presentation, elementIndex: number, textC
     }
 }
 
-function changeCurrentColorFont(presentation: Presentation, color: string): Presentation {
-    return {
-        ...presentation,
-        currentState: {
-            ...presentation.currentState,
-            currentColor: color
-        }
-    }
-}
-
 export {
     changeTextSize,
-    changeCurrTextSize,
     changeTextFont,
-    changeCurrentTextFont,
-    changeTextColor,
-    changeCurrentColorFont
+    changeTextColor
 }

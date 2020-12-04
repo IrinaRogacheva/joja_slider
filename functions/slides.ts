@@ -28,20 +28,9 @@ function addSlide(presentation: Presentation): Presentation {
     }  
 }
 
-function showSlide(presentation: Presentation, slideIndex: number): Presentation {
-    const newCurrentSlide = {...presentation.slidesList[slideIndex]}
-    return {
-        ...presentation,
-        currentState: {
-            ...presentation.currentState,
-            currentSlide: newCurrentSlide
-        }
-    }
-}
-
 function moveSlide(presentation: Presentation, index: number, newIndex: number): Presentation {
-    const copySlides = presentation.slidesList.slice()
-    const moveElement = copySlides.splice(index, 1)[0]
+    const copySlides: Array<Slide> = presentation.slidesList.slice()
+    const moveElement: Slide = copySlides.splice(index, 1)[0]
     copySlides.splice(newIndex, 0, moveElement)
     return {
         ...presentation,
@@ -73,7 +62,6 @@ function deleteSlide(presentation: Presentation): Presentation {
 }
 
 export {
-    showSlide,
     moveSlide,
     deleteSlide,
     addSlide

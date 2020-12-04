@@ -1,4 +1,4 @@
-import { addSlide, showSlide, moveSlide, deleteSlide, NEW_SLIDE_ID } from '../slides'
+import { addSlide, moveSlide, deleteSlide, NEW_SLIDE_ID } from '../slides'
 import {Presentation} from '../../entries/entries'
 
 test('addSlide function', () => {
@@ -49,64 +49,6 @@ test('addSlide function', () => {
     }
             
     expect(addSlide(presentationBefore)).toEqual(presentationAfter)
-})
-
-test('showSlide function', () => {
-    const slideIndex = 1
-    const presentationBefore: Presentation = {
-        name: 'New presentation',
-        slidesList: [
-            {
-                background: '#fff',
-                elements: [],
-                id: '0'
-            },
-            {
-                background: '#fff',
-                elements: [],
-                id: '1'
-            }
-        ],
-        currentState: {
-            currentSlide: {
-                background: '#fff',
-                elements: [],
-                id: '0'
-            },
-            selectedElements: [],
-            currentColor: '#fff',
-            currentTextSize: 14,
-            currentTextFont: 'Arial',
-        }
-    }
-    const presentationAfter: Presentation = {
-        name: 'New presentation',
-        slidesList: [
-            {
-                background: '#fff',
-                elements: [],
-                id: '0'
-            },
-            {
-                background: '#fff',
-                elements: [],
-                id: '1'
-            }
-        ],
-        currentState: {
-            currentSlide: {
-                background: '#fff',
-                elements: [],
-                id: '1'
-            },
-            selectedElements: [],
-            currentColor: '#fff',
-            currentTextSize: 14,
-            currentTextFont: 'Arial',
-        }
-    }
-
-    expect(showSlide(presentationBefore, slideIndex)).toEqual(presentationAfter)
 })
 
 test('moveSlide function', () => {

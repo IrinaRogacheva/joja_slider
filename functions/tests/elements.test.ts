@@ -2,8 +2,7 @@ import {
     addElement, 
     deleteElement, 
     moveElement, 
-    changeElementSize,
-    changeBackgroundColor
+    changeElementSize
 } from '../../functions/elements'
 import {Presentation, Element, Position, Size} from '../../entries/entries'
 
@@ -42,15 +41,8 @@ test('addElement function', () => {
             primitiveBorderColor: '#000',
             primitiveFillColor: '#fff'
         },
-        text: {
-            textString: '',
-            textSize: 14,
-            textFont: 'Arial',
-            textColor: '#000'
-        },
-        imageElement: {
-            imageUrl: '',
-        }
+        text: null,
+        imageElement: null
     }
     const presentationAfter: Presentation = {
         name: 'New presentation',
@@ -71,15 +63,8 @@ test('addElement function', () => {
                     primitiveBorderColor: '#000',
                     primitiveFillColor: '#fff'
                 },
-                text: {
-                    textString: '',
-                    textSize: 14,
-                    textFont: 'Arial',
-                    textColor: '#000'
-                },
-                imageElement: {
-                    imageUrl: '',
-                }
+                text: null,
+                imageElement: null
             }],
             id: '0'
         }],
@@ -101,15 +86,8 @@ test('addElement function', () => {
                         primitiveBorderColor: '#000',
                         primitiveFillColor: '#fff'
                     },
-                    text: {
-                        textString: '',
-                        textSize: 14,
-                        textFont: 'Arial',
-                        textColor: '#000'
-                    },
-                    imageElement: {
-                        imageUrl: '',
-                    }
+                    text: null,
+                    imageElement: null
                 }],
                 id: '0'
             },
@@ -205,24 +183,6 @@ test('deleteElement function', () => {
                     imageElement: null
                 },
                 {
-                    id: '3',
-                    elementPosition: {
-                        x: 0,
-                        y: 0
-                    },
-                    elementSize: {
-                        width: 30,
-                        height: 30
-                    },
-                    primitive: {
-                        primitiveType: 'circle',
-                        primitiveBorderColor: '#000',
-                        primitiveFillColor: '#fff'
-                    },
-                    text: null,
-                    imageElement: null
-                },
-                {
                     id: '2',
                     elementPosition: {
                         x: 0,
@@ -233,10 +193,32 @@ test('deleteElement function', () => {
                         height: 30
                     },
                     primitive: null,
-                    text: null,
-                    imageElement: {
-                        imageUrl: '',
-                    }
+                    text: {
+                        textString: '',
+                        textSize: 14,
+                        textFont: 'Arial',
+                        textColor: '#000'
+                    },
+                    imageElement: null
+                },
+                {
+                    id: '3',
+                    elementPosition: {
+                        x: 0,
+                        y: 0
+                    },
+                    elementSize: {
+                        width: 30,
+                        height: 30
+                    },
+                    primitive: null,
+                    text: {
+                        textString: '',
+                        textSize: 14,
+                        textFont: 'Arial',
+                        textColor: '#000'
+                    },
+                    imageElement: null
                 }],
                 id: '0'
             },
@@ -261,12 +243,13 @@ test('deleteElement function', () => {
                         width: 30,
                         height: 30
                     },
-                    primitive: {
-                        primitiveType: 'circle',
-                        primitiveBorderColor: '#000',
-                        primitiveFillColor: '#fff'
+                    primitive: null,
+                    text: {
+                        textString: '',
+                        textSize: 14,
+                        textFont: 'Arial',
+                        textColor: '#000'
                     },
-                    text: null,
                     imageElement: null
                 }
             ],
@@ -286,12 +269,13 @@ test('deleteElement function', () => {
                             width: 30,
                             height: 30
                         },
-                        primitive: {
-                            primitiveType: 'circle',
-                            primitiveBorderColor: '#000',
-                            primitiveFillColor: '#fff'
+                        primitive: null,
+                        text: {
+                            textString: '',
+                            textSize: 14,
+                            textFont: 'Arial',
+                            textColor: '#000'
                         },
-                        text: null,
                         imageElement: null
                     }
                 ],
@@ -307,7 +291,6 @@ test('deleteElement function', () => {
 })
 
 test('moveElement function', () => {
-    const elementIndex = 0
     const position: Position = {
         x: 100,
         y: 100
@@ -331,15 +314,8 @@ test('moveElement function', () => {
                     primitiveBorderColor: '#000',
                     primitiveFillColor: '#fff'
                 },
-                text: {
-                    textString: '',
-                    textSize: 14,
-                    textFont: 'Arial',
-                    textColor: '#000'
-                },
-                imageElement: {
-                    imageUrl: '',
-                }
+                text: null,
+                imageElement: null
             }],
             id: '0'
         }],
@@ -361,19 +337,12 @@ test('moveElement function', () => {
                         primitiveBorderColor: '#000',
                         primitiveFillColor: '#fff'
                     },
-                    text: {
-                        textString: '',
-                        textSize: 14,
-                        textFont: 'Arial',
-                        textColor: '#000'
-                    },
-                    imageElement: {
-                        imageUrl: '',
-                    }
+                    text: null,
+                    imageElement: null
                 }],
                 id: '0'
             },
-            selectedElements: [],
+            selectedElements: ['1'],
             currentColor: '#fff',
             currentTextSize: 14,
             currentTextFont: 'Arial',
@@ -398,15 +367,8 @@ test('moveElement function', () => {
                     primitiveBorderColor: '#000',
                     primitiveFillColor: '#fff'
                 },
-                text: {
-                    textString: '',
-                    textSize: 14,
-                    textFont: 'Arial',
-                    textColor: '#000'
-                },
-                imageElement: {
-                    imageUrl: '',
-                }
+                text: null,
+                imageElement: null
             }],
             id: '0'
         }],
@@ -428,15 +390,8 @@ test('moveElement function', () => {
                         primitiveBorderColor: '#000',
                         primitiveFillColor: '#fff'
                     },
-                    text: {
-                        textString: '',
-                        textSize: 14,
-                        textFont: 'Arial',
-                        textColor: '#000'
-                    },
-                    imageElement: {
-                        imageUrl: '',
-                    }
+                    text: null,
+                    imageElement: null
                 }],
                 id: '0'
             },
@@ -446,7 +401,7 @@ test('moveElement function', () => {
             currentTextFont: 'Arial',
         }
     }
-    expect(moveElement(presentationBefore, elementIndex, position)).toEqual(presentationAfter)
+    expect(moveElement(presentationBefore, position)).toEqual(presentationAfter)
 })
 
 test('changeElementSize function', () => {
@@ -474,15 +429,8 @@ test('changeElementSize function', () => {
                     primitiveBorderColor: '#000',
                     primitiveFillColor: '#fff'
                 },
-                text: {
-                    textString: '',
-                    textSize: 14,
-                    textFont: 'Arial',
-                    textColor: '#000'
-                },
-                imageElement: {
-                    imageUrl: '',
-                }
+                text: null,
+                imageElement: null
             }],
             id: '0'
         }],
@@ -504,19 +452,12 @@ test('changeElementSize function', () => {
                         primitiveBorderColor: '#000',
                         primitiveFillColor: '#fff'
                     },
-                    text: {
-                        textString: '',
-                        textSize: 14,
-                        textFont: 'Arial',
-                        textColor: '#000'
-                    },
-                    imageElement: {
-                        imageUrl: '',
-                    }
+                    text: null,
+                    imageElement: null
                 }],
                 id: '0'
             },
-            selectedElements: [],
+            selectedElements: ['1'],
             currentColor: '#fff',
             currentTextSize: 14,
             currentTextFont: 'Arial',
@@ -541,15 +482,8 @@ test('changeElementSize function', () => {
                     primitiveBorderColor: '#000',
                     primitiveFillColor: '#fff'
                 },
-                text: {
-                    textString: '',
-                    textSize: 14,
-                    textFont: 'Arial',
-                    textColor: '#000'
-                },
-                imageElement: {
-                    imageUrl: '',
-                }
+                text: null,
+                imageElement: null
             }],
             id: '0'
         }],
@@ -571,15 +505,8 @@ test('changeElementSize function', () => {
                         primitiveBorderColor: '#000',
                         primitiveFillColor: '#fff'
                     },
-                    text: {
-                        textString: '',
-                        textSize: 14,
-                        textFont: 'Arial',
-                        textColor: '#000'
-                    },
-                    imageElement: {
-                        imageUrl: '',
-                    }
+                    text: null,
+                    imageElement: null
                 }],
                 id: '0'
             },
@@ -590,144 +517,4 @@ test('changeElementSize function', () => {
         }
     }
     expect(changeElementSize(presentationBefore, elementIndex, size)).toEqual(presentationAfter)
-})
-
-test('changeBackgroundColor function', () => {
-    const backgroundColor = '#000'
-
-    const presentationBefore: Presentation = {
-        name: 'New presentation',
-        slidesList: [{
-            background: '#fff',
-            elements: [{
-                id: '1',
-                elementPosition: {
-                    x: 0,
-                    y: 0
-                },
-                elementSize: {
-                    width: 30,
-                    height: 30
-                },
-                primitive: {
-                    primitiveType: 'circle',
-                    primitiveBorderColor: '#000',
-                    primitiveFillColor: '#fff'
-                },
-                text: {
-                    textString: '',
-                    textSize: 14,
-                    textFont: 'Arial',
-                    textColor: '#000'
-                },
-                imageElement: {
-                    imageUrl: '',
-                }
-            }],
-            id: '0'
-        }],
-        currentState: {
-            currentSlide: {
-                background: '#fff',
-                elements: [{
-                    id: '1',
-                    elementPosition: {
-                        x: 0,
-                        y: 0
-                    },
-                    elementSize: {
-                        width: 30,
-                        height: 30
-                    },
-                    primitive: {
-                        primitiveType: 'circle',
-                        primitiveBorderColor: '#000',
-                        primitiveFillColor: '#fff'
-                    },
-                    text: {
-                        textString: '',
-                        textSize: 14,
-                        textFont: 'Arial',
-                        textColor: '#000'
-                    },
-                    imageElement: {
-                        imageUrl: '',
-                    }
-                }],
-                id: '0'
-            },
-            selectedElements: [],
-            currentColor: '#fff',
-            currentTextSize: 14,
-            currentTextFont: 'Arial',
-        }
-    }
-    const presentationAfter: Presentation = {
-        name: 'New presentation',
-        slidesList: [{
-            background: '#000',
-            elements: [{
-                id: '1',
-                elementPosition: {
-                    x: 0,
-                    y: 0
-                },
-                elementSize: {
-                    width: 30,
-                    height: 30
-                },
-                primitive: {
-                    primitiveType: 'circle',
-                    primitiveBorderColor: '#000',
-                    primitiveFillColor: '#fff'
-                },
-                text: {
-                    textString: '',
-                    textSize: 14,
-                    textFont: 'Arial',
-                    textColor: '#000'
-                },
-                imageElement: {
-                    imageUrl: '',
-                }
-            }],
-            id: '0'
-        }],
-        currentState: {
-            currentSlide: {
-                background: '#000',
-                elements: [{
-                    id: '1',
-                    elementPosition: {
-                        x: 0,
-                        y: 0
-                    },
-                    elementSize: {
-                        width: 30,
-                        height: 30
-                    },
-                    primitive: {
-                        primitiveType: 'circle',
-                        primitiveBorderColor: '#000',
-                        primitiveFillColor: '#fff'
-                    },
-                    text: {
-                        textString: '',
-                        textSize: 14,
-                        textFont: 'Arial',
-                        textColor: '#000'
-                    },
-                    imageElement: {
-                        imageUrl: '',
-                    }
-                }],
-                id: '0'
-            },
-            selectedElements: [],
-            currentColor: '#fff',
-            currentTextSize: 14,
-            currentTextFont: 'Arial',
-        }
-    }
-    expect(changeBackgroundColor(presentationBefore, backgroundColor)).toEqual(presentationAfter)
 })
