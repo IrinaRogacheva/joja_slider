@@ -25,9 +25,18 @@ function addElement(presentation: Presentation, element: Element): Presentation 
     }
 }
 
-function deleteElement(presentation: Presentation, elementIndex: number): Presentation {
+function deleteElement(presentation: Presentation): Presentation {
     const elementsArray = presentation.currentState.currentSlide.elements.slice()
-    elementsArray.splice(elementIndex, 1)
+    const selectedElements = presentation.currentState.selectedElements
+    for (let i = 0; i < selectedElements.length; i++) {
+        for (let j = 0; j < elementsArray.length; j++) {
+            if(elementsArray[j].id === selectedElements[i])
+            {
+                elementsArray.splice(j, 1)
+                break
+            }
+        }
+    }
     const currentSlide: Slide = {
         ...presentation.currentState.currentSlide,
         elements: elementsArray
@@ -45,7 +54,8 @@ function deleteElement(presentation: Presentation, elementIndex: number): Presen
         slidesList: copySlidesList,
         currentState: {
             ...presentation.currentState,
-            currentSlide: currentSlide
+            currentSlide: currentSlide,
+            selectedElements: []
         }
     }
 }

@@ -123,7 +123,6 @@ test('addElement function', () => {
 })
 
 test('deleteElement function', () => {  
-    const elementIndex = 0
     const presentationBefore: Presentation = {
         name: 'New presentation',
         slidesList: [{
@@ -138,17 +137,45 @@ test('deleteElement function', () => {
                     width: 30,
                     height: 30
                 },
-                primitive: {
-                    primitiveType: 'circle',
-                    primitiveBorderColor: '#000',
-                    primitiveFillColor: '#fff'
-                },
+                primitive: null,
                 text: {
                     textString: '',
                     textSize: 14,
                     textFont: 'Arial',
                     textColor: '#000'
                 },
+                imageElement: null
+            },
+            {
+                id: '3',
+                elementPosition: {
+                    x: 0,
+                    y: 0
+                },
+                elementSize: {
+                    width: 30,
+                    height: 30
+                },
+                primitive: {
+                    primitiveType: 'circle',
+                    primitiveBorderColor: '#000',
+                    primitiveFillColor: '#fff'
+                },
+                text: null,
+                imageElement: null
+            },
+            {
+                id: '2',
+                elementPosition: {
+                    x: 0,
+                    y: 0
+                },
+                elementSize: {
+                    width: 30,
+                    height: 30
+                },
+                primitive: null,
+                text: null,
                 imageElement: {
                     imageUrl: '',
                 }
@@ -168,24 +195,52 @@ test('deleteElement function', () => {
                         width: 30,
                         height: 30
                     },
-                    primitive: {
-                        primitiveType: 'circle',
-                        primitiveBorderColor: '#000',
-                        primitiveFillColor: '#fff'
-                    },
+                    primitive: null,
                     text: {
                         textString: '',
                         textSize: 14,
                         textFont: 'Arial',
                         textColor: '#000'
                     },
+                    imageElement: null
+                },
+                {
+                    id: '3',
+                    elementPosition: {
+                        x: 0,
+                        y: 0
+                    },
+                    elementSize: {
+                        width: 30,
+                        height: 30
+                    },
+                    primitive: {
+                        primitiveType: 'circle',
+                        primitiveBorderColor: '#000',
+                        primitiveFillColor: '#fff'
+                    },
+                    text: null,
+                    imageElement: null
+                },
+                {
+                    id: '2',
+                    elementPosition: {
+                        x: 0,
+                        y: 0
+                    },
+                    elementSize: {
+                        width: 30,
+                        height: 30
+                    },
+                    primitive: null,
+                    text: null,
                     imageElement: {
                         imageUrl: '',
                     }
                 }],
                 id: '0'
             },
-            selectedElements: [],
+            selectedElements: ['1', '2'],
             currentColor: '#fff',
             currentTextSize: 14,
             currentTextFont: 'Arial',
@@ -195,13 +250,51 @@ test('deleteElement function', () => {
         name: 'New presentation',
         slidesList: [{
             background: '#fff',
-            elements: [],
+            elements: [
+                {
+                    id: '3',
+                    elementPosition: {
+                        x: 0,
+                        y: 0
+                    },
+                    elementSize: {
+                        width: 30,
+                        height: 30
+                    },
+                    primitive: {
+                        primitiveType: 'circle',
+                        primitiveBorderColor: '#000',
+                        primitiveFillColor: '#fff'
+                    },
+                    text: null,
+                    imageElement: null
+                }
+            ],
             id: '0'
         }],
         currentState: {
             currentSlide: {
                 background: '#fff',
-                elements: [],
+                elements: [
+                    {
+                        id: '3',
+                        elementPosition: {
+                            x: 0,
+                            y: 0
+                        },
+                        elementSize: {
+                            width: 30,
+                            height: 30
+                        },
+                        primitive: {
+                            primitiveType: 'circle',
+                            primitiveBorderColor: '#000',
+                            primitiveFillColor: '#fff'
+                        },
+                        text: null,
+                        imageElement: null
+                    }
+                ],
                 id: '0'
             },
             selectedElements: [],
@@ -210,7 +303,7 @@ test('deleteElement function', () => {
             currentTextFont: 'Arial',
         }
     }
-    expect(deleteElement(presentationBefore, elementIndex)).toEqual(presentationAfter)
+    expect(deleteElement(presentationBefore)).toEqual(presentationAfter)
 })
 
 test('moveElement function', () => {
