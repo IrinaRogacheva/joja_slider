@@ -1,4 +1,4 @@
-import {Presentation, Slide} from '../entries/entries'
+import {Presentation} from '../entries/entries'
 import { empty } from 'uuidv4'
 
 function createPresentation(): Presentation {
@@ -24,6 +24,14 @@ function createPresentation(): Presentation {
     return presentation
 }
 
+function changePresentationName(presentation: Presentation, newName: string): Presentation {
+    return {
+        ...presentation,
+        name: newName
+    }
+}
+
+/**
 function openLocalPresentation(jsonFile: string): Presentation {
     const presentation: Presentation = JSON.parse(jsonFile)
     return presentation
@@ -53,13 +61,14 @@ function previewPresentation(presentation: Presentation): Array<Slide> {
     let slideshow: Array<Slide> 
     return slideshow
 }
-
+**/
 export {
     createPresentation,
-    openLocalPresentation,
+    changePresentationName,
+    /**openLocalPresentation,
     openCloudPresentation,
     saveLocalPresentation,
     saveCloudPresentation,
     exportPresentation,
-    previewPresentation
+    previewPresentation*/
 }

@@ -2,7 +2,7 @@ import {Presentation, Element, Slide} from '../entries/entries'
 
 function changeTextSize(presentation: Presentation, elementIndex: number, textSize: number): Presentation {
     if (presentation.currentState.currentSlide.elements[elementIndex].text === null) {
-        return
+        return presentation
     }
     const copySlidesList: Array<Slide> = presentation.slidesList.slice()
     const copyCurrentSlide: Slide = {...presentation.currentState.currentSlide}
@@ -41,7 +41,7 @@ function changeTextSize(presentation: Presentation, elementIndex: number, textSi
 
 function changeTextFont(presentation: Presentation, elementIndex: number, textFont: string): Presentation {
     if (presentation.currentState.currentSlide.elements[elementIndex].text === null) {
-        return
+        return presentation
     }
     const copySlidesList: Array<Slide> = presentation.slidesList.slice()
     const copyCurrentSlide: Slide = {...presentation.currentState.currentSlide}
@@ -79,7 +79,7 @@ function changeTextFont(presentation: Presentation, elementIndex: number, textFo
 
 function changeTextColor(presentation: Presentation, elementIndex: number, textColor: string): Presentation {
     if (presentation.currentState.currentSlide.elements[elementIndex].text === null) {
-        return
+        return presentation
     }
     const copySlidesList: Array<Slide> = presentation.slidesList.slice()
     const copyCurrentSlide: Slide = {...presentation.currentState.currentSlide}
