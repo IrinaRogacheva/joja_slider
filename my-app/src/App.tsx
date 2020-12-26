@@ -1,6 +1,8 @@
 import React from 'react';
 import './App.css';
 import {PresentationName} from './components/PresentationName';
+import WorkArea from './components/WorkArea'
+
 //import Hello from './chto-to'
 
 function App() {
@@ -10,7 +12,7 @@ function App() {
         <PresentationName/>
       </div>
       <div className="Main">
-        <div className="WorkArea"></div>        
+        <WorkArea/>       
         <div className="SlidesList"></div>  
       </div>
     </div>

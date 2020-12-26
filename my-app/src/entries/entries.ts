@@ -1,4 +1,5 @@
 export type {Presentation, Slide, CurrentState, Size, Text, Element, Position, Primitive}
+export {ElementType}
 
 type Text = {
     textString: string,
@@ -25,19 +26,19 @@ type Background = ImageElement|string;
 
 type PrimitiveType = 'circle'|'rectangle'|'triangle'|'polygon'|'line'
 
-type Primitive = {
+type Primitive = Element &  {
     primitiveType: PrimitiveType,
     primitiveBorderColor: string,
     primitiveFillColor: string
 };
 
+enum ElementType {text, primitive, image}
+
 type Element = {
     id: string,
     elementPosition: Position,
     elementSize: Size,
-    primitive: Primitive|null,
-    text: Text|null,
-    imageElement: ImageElement|null
+    elementType: ElementType
 };
 
 type CurrentState = {

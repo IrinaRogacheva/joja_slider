@@ -1,122 +1,162 @@
 import {Presentation, Element, Slide} from '../entries/entries'
 
-function changeTextSize(presentation: Presentation, elementIndex: number, textSize: number): Presentation {
-    if (presentation.currentState.currentSlide.elements[elementIndex].text === null) {
-        return presentation
-    }
+
+function changeTextSize(presentation: Presentation, textSize: number): Presentation {
     const copySlidesList: Array<Slide> = presentation.slidesList.slice()
-    const copyCurrentSlide: Slide = {...presentation.currentState.currentSlide}
-    let slideInd: number
+    const currentSlide: Slide = {...presentation.currentState.currentSlide}
+    const copyElements: Array<Element> = presentation.currentState.currentSlide.elements.slice()
+    const selectedElements: Array<Element> = presentation.currentState.selectedElements.slice()
+    for (let i = 0; i < selectedElements.length; i++) {
+        if (selectedElements[i].text !== null) {
+            selectedElements[i] = {
+                ...selectedElements[i],
+                text: {
+                    ...selectedElements[i].text,
+                    textSize: textSize
+                }
+            }
+        }
+    }
+    for (let i = 0; i < selectedElements.length; i++) {
+        for (let j = 0; i < copyElements.length; j++) {
+            if (selectedElements[i].id === copyElements[j].id) {
+                copyElements[j] = selectedElements[i]
+                break
+            }
+        }
+    }
+    currentSlide.elements = copyElements
     for (let i = 0; i < copySlidesList.length; i++) {
-        if(copySlidesList[i].id === copyCurrentSlide.id) {
-            slideInd = i
+        if(copySlidesList[i].id === currentSlide.id)
+        {
+            copySlidesList[i] = currentSlide
             break
         }
     }
-    const slideIndex = slideInd
-    const copyElements: Array<Element> = presentation.slidesList[slideIndex].elements.slice()
-    const copyElement: Element = copyElements[elementIndex]
-    const newCopyElement = {
-        ...copyElement,
-        text: {
-            ...copyElement.text,
-            textSize: textSize
-        }
-    }
-
-    copyElements[elementIndex] = {...newCopyElement}
-    copySlidesList[slideIndex] = {
-        ...copySlidesList[slideIndex],
-        elements: copyElements
-    }
-    
     return {
         ...presentation,
         slidesList: copySlidesList,
-        currentState: {...presentation.currentState,
-            currentSlide: copySlidesList[slideIndex]
+        currentState: {
+            ...presentation.currentState,
+            currentSlide: currentSlide,
+            selectedElements: selectedElements
+        }
+    }   
+}
+
+function changeCurrentTextSize(presentation: Presentation, textSize: number): Presentation {
+    return {
+        ...presentation,
+        currentState: {
+            ...presentation.currentState,
+            currentTextSize: textSize
         }
     }
 }
 
-function changeTextFont(presentation: Presentation, elementIndex: number, textFont: string): Presentation {
-    if (presentation.currentState.currentSlide.elements[elementIndex].text === null) {
-        return presentation
-    }
+
+function changeTextFont(presentation: Presentation, textFont: string): Presentation {
     const copySlidesList: Array<Slide> = presentation.slidesList.slice()
-    const copyCurrentSlide: Slide = {...presentation.currentState.currentSlide}
-    let slideInd: number
+    const currentSlide: Slide = {...presentation.currentState.currentSlide}
+    const copyElements: Array<Element> = presentation.currentState.currentSlide.elements.slice()
+    const selectedElements: Array<Element> = presentation.currentState.selectedElements.slice()
+    for (let i = 0; i < selectedElements.length; i++) {
+        if (selectedElements[i].primitive !== null) {
+            selectedElements[i] = {
+                ...selectedElements[i],
+                text: {
+                    ...selectedElements[i].text,
+                    textFont: textFont
+                }
+            }
+        }
+    }
+    for (let i = 0; i < selectedElements.length; i++) {
+        for (let j = 0; i < copyElements.length; j++) {
+            if (selectedElements[i].id === copyElements[j].id) {
+                copyElements[j] = selectedElements[i]
+                break
+            }
+        }
+    }
+    currentSlide.elements = copyElements
     for (let i = 0; i < copySlidesList.length; i++) {
-        if(copySlidesList[i].id === copyCurrentSlide.id) {
-            slideInd = i
+        if(copySlidesList[i].id === currentSlide.id)
+        {
+            copySlidesList[i] = currentSlide
             break
         }
     }
-    const slideIndex = slideInd
-    const copyElements: Array<Element> = presentation.slidesList[slideIndex].elements.slice()
-    const copyElement: Element = copyElements[elementIndex]
-    const newCopyElement = {
-        ...copyElement,
-        text: {
-            ...copyElement.text,
-            textFont: textFont
-        }
-    }
-    copyElements[elementIndex] = {...newCopyElement}
-    copySlidesList[slideIndex] = {
-        ...copySlidesList[slideIndex],
-        elements: copyElements
-    }
-    
     return {
         ...presentation,
         slidesList: copySlidesList,
-        currentState: {...presentation.currentState,
-            currentSlide: copySlidesList[slideIndex]
+        currentState: {
+            ...presentation.currentState,
+            currentSlide: currentSlide,
+            selectedElements: selectedElements
+        }
+    }   
+}
+
+function changeCurrentTextFont(presentation: Presentation, textFont: string): Presentation {
+    return {
+        ...presentation,
+        currentState: {
+            ...presentation.currentState,
+            currentTextFont: textFont
         }
     }
 }
 
-function changeTextColor(presentation: Presentation, elementIndex: number, textColor: string): Presentation {
-    if (presentation.currentState.currentSlide.elements[elementIndex].text === null) {
-        return presentation
-    }
+
+function changeTextColor(presentation: Presentation,  textColor: string): Presentation {
     const copySlidesList: Array<Slide> = presentation.slidesList.slice()
-    const copyCurrentSlide: Slide = {...presentation.currentState.currentSlide}
-    let slideInd: number
+    const currentSlide: Slide = {...presentation.currentState.currentSlide}
+    const copyElements: Array<Element> = presentation.currentState.currentSlide.elements.slice()
+    const selectedElements: Array<Element> = presentation.currentState.selectedElements.slice()
+    for (let i = 0; i < selectedElements.length; i++) {
+        if (selectedElements[i].primitive !== null) {
+            selectedElements[i] = {
+                ...selectedElements[i],
+                text: {
+                    ...selectedElements[i].text,
+                    textColor: textColor
+                }
+            }
+        }
+    }
+    for (let i = 0; i < selectedElements.length; i++) {
+        for (let j = 0; i < copyElements.length; j++) {
+            if (selectedElements[i].id === copyElements[j].id) {
+                copyElements[j] = selectedElements[i]
+                break
+            }
+        }
+    }
+    currentSlide.elements = copyElements
     for (let i = 0; i < copySlidesList.length; i++) {
-        if(copySlidesList[i].id === copyCurrentSlide.id) {
-            slideInd = i
+        if(copySlidesList[i].id === currentSlide.id)
+        {
+            copySlidesList[i] = currentSlide
             break
         }
     }
-    const slideIndex = slideInd
-    const copyElements: Array<Element> = presentation.slidesList[slideIndex].elements.slice()
-    const copyElement: Element = copyElements[elementIndex]
-    const newCopyElement = {
-        ...copyElement,
-        text: {
-            ...copyElement.text,
-            textColor: textColor
-        }
-    }
-    copyElements[elementIndex] = {...newCopyElement}
-    copySlidesList[slideIndex] = {
-        ...copySlidesList[slideIndex],
-        elements: copyElements
-    }
-    
     return {
         ...presentation,
         slidesList: copySlidesList,
-        currentState: {...presentation.currentState,
-            currentSlide: copySlidesList[slideIndex]
+        currentState: {
+            ...presentation.currentState,
+            currentSlide: currentSlide,
+            selectedElements: selectedElements
         }
-    }
+    }   
 }
+
 
 export {
     changeTextSize,
+    changeCurrentTextSize,
     changeTextFont,
+    changeCurrentTextFont,
     changeTextColor
 }

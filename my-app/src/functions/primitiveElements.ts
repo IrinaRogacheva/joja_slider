@@ -1,79 +1,70 @@
-import {Presentation, Element, Slide} from '../entries/entries'
+import {Presentation, Element, Slide, ElementType, Primitive} from '../entries/entries'
 
-function changePrimitiveBorderColor(presentation: Presentation, elementIndex: number, primitiveBorderColor: string): Presentation {
-    if (presentation.currentState.currentSlide.elements[elementIndex].primitive === null) {
-        return
-    }
+function changePrimitiveBorderColor(presentation: Presentation, borderColor: string): Presentation {
     const copySlidesList: Array<Slide> = presentation.slidesList.slice()
-    const copyCurrentSlide: Slide = {...presentation.currentState.currentSlide}
-    let slideInd: number
+    const currentSlide: Slide = {...presentation.currentState.currentSlide}
+    const copyElements: Array<Element> = presentation.currentState.currentSlide.elements.slice()
+    const selectedElements: Array<string> = presentation.currentState.selectedElements.slice()
+    for (let i = 0; i < selectedElements.length; i++) {
+        for (let j = 0; j < copyElements.length; j++) {
+            if (copyElements[j].id === selectedElements[i]) {
+                if (copyElements[j].elementType === ElementType.primitive) {
+                    (copyElements[j] as Primitive).primitiveBorderColor = borderColor
+                }
+            }
+        }
+    }
+    currentSlide.elements = copyElements
     for (let i = 0; i < copySlidesList.length; i++) {
-        if(copySlidesList[i].id === copyCurrentSlide.id) {
-            slideInd = i
+        if(copySlidesList[i].id === currentSlide.id)
+        {
+            copySlidesList[i] = currentSlide
             break
         }
     }
-    const slideIndex = slideInd
-    const copyElements: Array<Element> = presentation.slidesList[slideIndex].elements.slice()
-    const copyElement: Element = copyElements[elementIndex]
-    const newCopyElement = {
-        ...copyElement,
-        primitive: {
-            ...copyElement.primitive,
-            primitiveBorderColor: primitiveBorderColor
-        }
-    }
-    copyElements[elementIndex] = {...newCopyElement}
-    copySlidesList[slideIndex] = {
-        ...copySlidesList[slideIndex],
-        elements: copyElements
-    }
-    
+
     return {
         ...presentation,
         slidesList: copySlidesList,
-        currentState: {...presentation.currentState,
-            currentSlide: copySlidesList[slideIndex]
+        currentState: {
+            ...presentation.currentState,
+            currentSlide: currentSlide,
+            selectedElements: selectedElements
         }
-    }
+    }   
 }
 
-function changePrimitiveFillColor(presentation: Presentation, elementIndex: number, primitiveFillColor: string): Presentation {
-    if (presentation.currentState.currentSlide.elements[elementIndex].primitive === null) {
-        return
-    }
+function changePrimitiveFillColor(presentation: Presentation, fillColor: string): Presentation {
     const copySlidesList: Array<Slide> = presentation.slidesList.slice()
-    const copyCurrentSlide: Slide = {...presentation.currentState.currentSlide}
-    let slideInd: number
+    const currentSlide: Slide = {...presentation.currentState.currentSlide}
+    const copyElements: Array<Element> = presentation.currentState.currentSlide.elements.slice()
+    const selectedElements: Array<string> = presentation.currentState.selectedElements.slice()
+    for (let i = 0; i < selectedElements.length; i++) {
+        for (let j = 0; j < copyElements.length; j++) {
+            if (copyElements[j].id === selectedElements[i]) {
+                if (copyElements[j].elementType === ElementType.primitive) {
+                    (copyElements[j] as Primitive).primitiveFillColor = fillColor
+                }
+            }
+        }
+    }
+    currentSlide.elements = copyElements
     for (let i = 0; i < copySlidesList.length; i++) {
-        if(copySlidesList[i].id === copyCurrentSlide.id) {
-            slideInd = i
+        if(copySlidesList[i].id === currentSlide.id)
+        {
+            copySlidesList[i] = currentSlide
             break
         }
     }
-    const slideIndex = slideInd
-    const copyElements: Array<Element> = presentation.slidesList[slideIndex].elements.slice()
-    const copyElement: Element = copyElements[elementIndex]
-    const newCopyElement = {
-        ...copyElement,
-        primitive: {
-            ...copyElement.primitive,
-            primitiveFillColor: primitiveFillColor
-        }
-    }
-    copyElements[elementIndex] = {...newCopyElement}
-    copySlidesList[slideIndex] = {
-        ...copySlidesList[slideIndex],
-        elements: copyElements
-    }
-    
     return {
         ...presentation,
         slidesList: copySlidesList,
-        currentState: {...presentation.currentState,
-            currentSlide: copySlidesList[slideIndex]
+        currentState: {
+            ...presentation.currentState,
+            currentSlide: currentSlide,
+            selectedElements: selectedElements
         }
-    }
+    }   
 }
 
 export {changePrimitiveBorderColor,changePrimitiveFillColor}
