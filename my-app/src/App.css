@@ -1,121 +1,137 @@
 .App {
-  display: flex;
-  height: 100%;
-  background-color: #1d1c18;
-  }
-  
-  .Main {
-  text-align: center;
-  display: flex;
-  background-color: #1d1c18;
-  flex-direction: column;
-  height: 100vh;
-  width: 80%;
-  }
-  
-  .Main2 {
-  flex-direction: row;
-  }
-  
-  .Icon {
-  width: 30px;
-  }
-  
-  .Menu {
-  width: 20%;
-  }
-  
-  .WorkArea {
-  width: 100%;
-  height: 80vh;
-  background-color: #000000;
-  }
-  
-  .WorkArea2 {
-  width: 70%;
-  height: 70vh;
-  margin-top: 30px;
-  background-color: #fcfcfc;
-  }
-  
-  .SlidesList {
-  width: 100%;
-  height: 20vh;
-  background-color: #cfbb03;
-  }
-  
-  .Slide {
-  width: 200px;
-  height: 130px;
-  background-color: #fafaf9;
-  display: flex;
-  margin-top: 20px;
-  margin-left: 50px;
-  }
-  
-  .NamePresentation {
-  width: 300px;
-  height: 40px;
-  margin-left: 20px;
-  margin-top: 20px;
-  outline: none;
-  border: none;
-  background: none;
-  color:#fafaf9;
-  font-size: 30px;
-  font-family: Tahoma;
-  }
-  
-  .IconButton {
-  margin-top: 20px;
-  margin-left: 40px;
-  width: 40px;
-  height: 40px;
-  border: none;
-  }
-  
-  .Icon {
-  background: url(./icons/icons8-создать-новый-48.png);
-  background-size: 40px 40px;
-  }
-  
-  .IconButton:focus
-  {
-  outline: none;
-  }
-  
-  .IconButton:hover
-  {
+display: flex;
+height: 100%;
+background-color: #1d1c18;
+}
+
+.Main {
+text-align: center;
+display: flex;
+background-color: #1d1c18;
+flex-direction: column;
+height: 100vh;
+width: 80%;
+}
+
+.Main2 {
+flex-direction: row;
+height: 20vh;
+}
+
+.Icon {
+width: 30px;
+}
+
+.Menu {
+width: 20%;
+}
+
+.WorkArea {
+width: 100%;
+height: 80vh;
+background-color: #000000;
+}
+
+.WorkArea2 {
+width: 70%;
+height: 70vh;
+margin-top: 30px;
+background-color: #fcfcfc;
+}
+
+.SlidesList {
+width: 100%;
+height: 20vh;
+background-color: #cfbb03;
+}
+
+.Slide {
+width: 200px;
+height: 130px;
+background-color: #fafaf9;
+display: flex;
+margin-top: 20px;
+margin-left: 50px;
+}
+
+.NamePresentation {
+width: 300px;
+height: 40px;
+margin-left: 20px;
+margin-top: 20px;
+outline: none;
+border: none;
+background: none;
+color:#fafaf9;
+font-size: 30px;
+font-family: Tahoma;
+box-sizing: border-box;
+text-align: center;
+border-radius: 5px;
+}
+
+.NamePresentation:hover {
+  border: 1px solid #e5e5e5;
   cursor: pointer;
-  filter: brightness(3);
-  }
-  
-  .Left {
-  background: url(./icons/icons8-u---образная-стрелка-влево-50.png);
-  background-size: 40px 40px;
-  }
-  
-  .Right {
-  background: url(./icons/icons8-u---образная-стрелка-вправо-50.png);
-  background-size: 40px 40px;
-  }
-  
-  .kr {
-  background: url(./icons/icons8-заполненный-круг-50.png);
-  background-size: 40px 40px;
-  }
-  
-  .tr {
-  background: url(./icons/icons8-треугольник-50.png);
-  background-size: 40px 40px;
-  }
-  
-  .kv {
-  background: url(./icons/icons8-прямоугольник-50.png);
-  background-size: 40px 40px;
-  }
-  
-  .Picture {
-  background: url(./icons/icons8-очень-большие-иконки-50.png);
-  background-size: 40px 40px;
-  }
+}
+
+.NamePresentation:focus {
+  box-shadow: 0 0 0 1px #1d1c18, 0 0 0 2px #e5e5e5;
+  background: #fff;
+  color: #1d1c18;
+  cursor: auto;
+}
+
+.IconButton {
+margin-top: 20px;
+margin-left: 40px;
+width: 40px;
+height: 40px;
+border: none;
+}
+
+.Icon {
+background: url(./icons/icons8-создать-новый-48.png);
+background-size: 40px 40px;
+}
+
+.IconButton:focus
+{
+outline: none;
+}
+
+.IconButton:hover
+{
+cursor: pointer;
+filter: brightness(3);
+}
+
+.Left {
+background: url(./icons/icons8-u---образная-стрелка-влево-50.png);
+background-size: 40px 40px;
+}
+
+.Right {
+background: url(./icons/icons8-u---образная-стрелка-вправо-50.png);
+background-size: 40px 40px;
+}
+
+.kr {
+background: url(./icons/icons8-заполненный-круг-50.png);
+background-size: 40px 40px;
+}
+
+.tr {
+background: url(./icons/icons8-треугольник-50.png);
+background-size: 40px 40px;
+}
+
+.kv {
+background: url(./icons/icons8-прямоугольник-50.png);
+background-size: 40px 40px;
+}
+
+.Picture {
+background: url(./icons/icons8-очень-большие-иконки-50.png);
+background-size: 40px 40px;
+}
