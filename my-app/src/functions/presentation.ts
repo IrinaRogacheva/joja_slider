@@ -4,32 +4,34 @@ import * as CONSTANTS from '../entries/constants'
 export const NEW_SLIDE_ID = uuidv4()
 
 function createPresentation(): Presentation {
-    const presentation: Presentation = {
-        name: CONSTANTS.DEFAULT_PRESENTATION_NAME,
-        slidesList: [{
-            background: CONSTANTS.WHITE,
-            elements: [],
-            id: NEW_SLIDE_ID
-        }],
-        currentState: {
+    return {
+        model: {
+            name: CONSTANTS.DEFAULT_PRESENTATION_NAME,
+            slidesList: [{
+                background: CONSTANTS.WHITE,
+                elements: [],
+                id: NEW_SLIDE_ID
+            }],
             currentSlide: {
                 background: CONSTANTS.WHITE,
                 elements: [],
                 id: NEW_SLIDE_ID
             },
-            selectedElements: [],
-            currentColor: CONSTANTS.WHITE,
-            currentTextSize: CONSTANTS.DEFAULT_TEXT_SIZE,
-            currentTextFont: CONSTANTS.DEFAULT_TEXT_FONT,
-        }
-    }
-    return presentation
+            selectedSlidesId: [],
+            selectedElementsId: []
+        },
+        view: {
+            color: CONSTANTS.WHITE,
+            textSize: CONSTANTS.DEFAULT_TEXT_SIZE,
+            textFont: CONSTANTS.DEFAULT_TEXT_FONT
+        } 
+    } as Presentation
 }
 
 function changePresentationName(presentation: Presentation, newName: string): Presentation {
-    return {
-        ...presentation,
-        name: newName
+    return {...presentation,
+        model: {...presentation.model,
+            name: newName}
     }
 }
 

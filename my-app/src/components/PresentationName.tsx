@@ -19,7 +19,7 @@ function Name1(props: any) {
     let presento = props.state
     
     return (
-    <input className='NamePresentation' type='text' id='pop' value={presento.name} onChange={(e) => props.changePresentationName(e.target.value)}/>
+    <input className='NamePresentation' type='text' id='pop' value={presento.model.name} onChange={(e) => props.changePresentationName(e.target.value)}/>
     )}
 
 export default connect(stateOne, dispatchOne)(Name1)

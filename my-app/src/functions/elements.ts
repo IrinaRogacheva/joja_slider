@@ -1,22 +1,20 @@
 import {Presentation, Element, Slide, Size, Position} from '../entries/entries'
        
 function addElement(presentation: Presentation, element: Element): Presentation {
-    const elementsArray = presentation.currentState.currentSlide.elements.slice()
+    const elementsArray = presentation.model.currentSlide.elements.slice()
     elementsArray.push(element)
-    const currentSlide = changeCurrentSlide(presentation, elementsArray)
-    return {
-        ...presentation,
-        slidesList: changeSlideInSlidesList(presentation, currentSlide),
-        currentState: {
-            ...presentation.currentState,
+    const currentSlide = changeCurSlide(presentation, elementsArray)
+    return {...presentation,
+        model: {...presentation.model,
+            slidesList: changeSlideInSlidesList(presentation, currentSlide),
             currentSlide: currentSlide
         }
-    }
+    } as Presentation
 }
 
 function deleteElement(presentation: Presentation): Presentation {
-    const elementsArray = presentation.currentState.currentSlide.elements.slice()
-    const selectedElements = presentation.currentState.selectedElements
+    const elementsArray = presentation.model.currentSlide.elements.slice()
+    const selectedElements = presentation.model.selectedElementsId
     for (let i = 0; i < selectedElements.length; i++) {
         for (let j = 0; j < elementsArray.length; j++) {
             if(elementsArray[j].id === selectedElements[i])
@@ -26,73 +24,76 @@ function deleteElement(presentation: Presentation): Presentation {
             }
         }
     }
-    const currentSlide = changeCurrentSlide(presentation, elementsArray)
-    return {
-        ...presentation,
-        slidesList: changeSlideInSlidesList(presentation, currentSlide),
-        currentState: {
-            ...presentation.currentState,
+    const currentSlide = changeCurSlide(presentation, elementsArray)
+    return {...presentation,
+        model: {...presentation.model,
+            slidesList: changeSlideInSlidesList(presentation, currentSlide),
             currentSlide: currentSlide,
-            selectedElements: []
+            selectedElementsId: []
         }
-    }
+    } as Presentation
 }
 
 function moveElement(presentation: Presentation, position: Position): Presentation {
-    const elementsArray = presentation.currentState.currentSlide.elements.slice()
-    const selectedElements = presentation.currentState.selectedElements.slice()
+    const elementsArray = presentation.model.currentSlide.elements.slice()
+    const selectedElements = presentation.model.selectedElementsId.slice()
     for (let i = 0; i < elementsArray.length; i++) {
         if(elementsArray[i].id === selectedElements[0])
         {
             elementsArray[i] = {
-                ...presentation.currentState.currentSlide.elements[i],
+                ...presentation.model.currentSlide.elements[i],
                 elementPosition: position
             }
             break
         }
     
     }
-    const currentSlide = changeCurrentSlide(presentation, elementsArray)
-    return {
-        ...presentation,
-        slidesList: changeSlideInSlidesList(presentation, currentSlide),
-        currentState: {
-            ...presentation.currentState,
+    const currentSlide = changeCurSlide(presentation, elementsArray)
+    return {...presentation,
+        model: {...presentation.model,
+            slidesList: changeSlideInSlidesList(presentation, currentSlide),
             currentSlide: currentSlide,
-            selectedElements: []
+            selectedElementsId: []
         }
-    }
+    } as Presentation
 }
 
-function changeElementSize(presentation: Presentation, elementIndex: number, elementSize: Size): Presentation {
-    const elementsArray = presentation.currentState.currentSlide.elements.slice()
-    const selectedElements = presentation.currentState.selectedElements
+function changeElementSize(presentation: Presentation, elementSize: Size): Presentation {
+    const elementsArray = presentation.model.currentSlide.elements.slice()
+    const selectedElements = presentation.model.selectedElementsId
     for (let i = 0; i < elementsArray.length; i++) {
         if(elementsArray[i].id === selectedElements[0])
         {
             elementsArray[i] = {
-                ...presentation.currentState.currentSlide.elements[i],
+                ...presentation.model.currentSlide.elements[i],
                 elementSize: elementSize
             }
             break
         }
     
     }
-    const currentSlide = changeCurrentSlide(presentation, elementsArray)
-    return {
-        ...presentation,
-        slidesList: changeSlideInSlidesList(presentation, currentSlide),
-        currentState: {
-            ...presentation.currentState,
+    const currentSlide = changeCurSlide(presentation, elementsArray)
+    return {...presentation,
+        model: {...presentation.model,
+            slidesList: changeSlideInSlidesList(presentation, currentSlide),
             currentSlide: currentSlide,
-            selectedElements: []
+            selectedElementsId: []
         }
-    }    
+    } as Presentation
+}
+
+function selectElements(presentation: Presentation, elementsIdArray: Array<string>): Presentation
+{
+    return {...presentation,
+        model: {...presentation.model,
+            selectedElementsId: elementsIdArray
+        }
+    } as Presentation
 }
 
 function changeSlideInSlidesList(presentation: Presentation, currentSlide: Slide): Array<Slide>
 {
-    const copySlidesList: Array<Slide> = presentation.slidesList.slice()
+    const copySlidesList: Array<Slide> = presentation.model.slidesList.slice()
     for (let i = 0; i < copySlidesList.length; i++) {
         if(copySlidesList[i].id === currentSlide.id)
         {
@@ -103,12 +104,12 @@ function changeSlideInSlidesList(presentation: Presentation, currentSlide: Slide
     return copySlidesList
 }
 
-function changeCurrentSlide(presentation: Presentation, elementsArray: Array<Element>): Slide
+function changeCurSlide(presentation: Presentation, elementsArray: Array<Element>): Slide
 {
     return {
-        ...presentation.currentState.currentSlide,
+        ...presentation.model.currentSlide,
         elements: elementsArray
-    }
+    } as Slide
 }
 
 export {
@@ -117,5 +118,6 @@ export {
     moveElement,
     changeElementSize,
     changeSlideInSlidesList,
-    changeCurrentSlide
+    changeCurSlide,
+    selectElements
 }

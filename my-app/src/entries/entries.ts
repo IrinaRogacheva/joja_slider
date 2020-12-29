@@ -1,4 +1,4 @@
-export type {Presentation, Slide, CurrentState, Size, Text, Element, Position, Primitive}
+export type {Presentation, Slide, Size, Text, Element, Position, Primitive}
 export {ElementType}
 
 type Position = {
@@ -11,7 +11,12 @@ type Size = {
     height: number
 }
 
+type Background = ImageElement|string;
+
+enum ElementType {text, primitive, image}
+
 type Text = Element & {
+    elementType: ElementType.text,
     textString: string,
     textSize: number,
     textFont: string,
@@ -19,20 +24,18 @@ type Text = Element & {
 };
 
 type ImageElement = {
+    elementType: ElementType.image,
     imageUrl: string,
 };
-
-type Background = ImageElement|string;
 
 type PrimitiveType = 'circle'|'rectangle'|'triangle'|'polygon'|'line'
 
 type Primitive = Element & {
+    elementType: ElementType.primitive,
     primitiveType: PrimitiveType,
     primitiveBorderColor: string,
     primitiveFillColor: string
 };
-
-enum ElementType {text, primitive, image}
 
 type Element = {
     id: string,
@@ -41,22 +44,27 @@ type Element = {
     elementType: ElementType
 };
 
-type CurrentState = {
-    currentSlide: Slide,
-    selectedElements: Array<string>,
-    currentColor: string,
-    currentTextSize: number,
-    currentTextFont: string,
-}
-
 type Slide = {
     background: Background,
-    elements: Array<Element>
+    elements: Array<Element>,  
     id: string
 };
 
-type Presentation = {
+type Model = {
     name: string, 
     slidesList: Array<Slide>,
-    currentState: CurrentState, 
-  };
+    currentSlide: Slide,
+    selectedSlidesId: Array<string>,
+    selectedElementsId: Array<string>
+}
+
+type View = {
+    color: string,
+    textSize: number,
+    textFont: string
+}
+
+type Presentation = {
+    model: Model,
+    view: View
+}
