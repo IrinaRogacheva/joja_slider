@@ -7,13 +7,18 @@ function changePrimitiveBorderColor(presentation: Presentation, borderColor: str
     const selectedElements: Array<string> = presentation.currentState.selectedElements.slice()
     for (let i = 0; i < selectedElements.length; i++) {
         for (let j = 0; j < copyElements.length; j++) {
+            console.log('copyElements[j].id === selectedElements[i]: ' + copyElements[j].id === selectedElements[i])
             if (copyElements[j].id === selectedElements[i]) {
                 if (copyElements[j].elementType === ElementType.primitive) {
                     (copyElements[j] as Primitive).primitiveBorderColor = borderColor
+                    copyElements[j]= {
+                        ...copyElements[j] as Primitive,
+                            primitiveBorderColor: borderColor
+                        } as Primitive
+                    }
                 }
             }
         }
-    }
     currentSlide.elements = copyElements
     for (let i = 0; i < copySlidesList.length; i++) {
         if(copySlidesList[i].id === currentSlide.id)

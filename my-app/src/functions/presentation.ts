@@ -1,24 +1,26 @@
 import {Presentation} from '../entries/entries'
-import { empty } from 'uuidv4'
+import { v4 as uuidv4 } from 'uuid'
+import * as CONSTANTS from '../entries/constants'
+export const NEW_SLIDE_ID = uuidv4()
 
 function createPresentation(): Presentation {
     const presentation: Presentation = {
-        name: 'New presentation',
+        name: CONSTANTS.DEFAULT_PRESENTATION_NAME,
         slidesList: [{
-            background: '#fff',
+            background: CONSTANTS.WHITE,
             elements: [],
-            id: empty()
+            id: NEW_SLIDE_ID
         }],
         currentState: {
             currentSlide: {
-                background: '#fff',
+                background: CONSTANTS.WHITE,
                 elements: [],
-                id: empty()
+                id: NEW_SLIDE_ID
             },
             selectedElements: [],
-            currentColor: '#fff',
-            currentTextSize: 14,
-            currentTextFont: 'Arial',
+            currentColor: CONSTANTS.WHITE,
+            currentTextSize: CONSTANTS.DEFAULT_TEXT_SIZE,
+            currentTextFont: CONSTANTS.DEFAULT_TEXT_FONT,
         }
     }
     return presentation

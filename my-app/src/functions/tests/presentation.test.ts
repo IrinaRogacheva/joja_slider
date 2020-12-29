@@ -1,5 +1,6 @@
-import { createPresentation } from '../../functions/presentation'
+import { createPresentation, NEW_SLIDE_ID } from '../../functions/presentation'
 import {Presentation} from '../../entries/entries'
+
 
 test('createPresentation function', () => {
     const presentation: Presentation = {
@@ -7,13 +8,13 @@ test('createPresentation function', () => {
         slidesList: [{
             background: '#fff',
             elements: [],
-            id: '00000000-0000-0000-0000-000000000000'
+            id: NEW_SLIDE_ID
         }],
         currentState: {
             currentSlide: {
                 background: '#fff',
                 elements: [],
-                id: '00000000-0000-0000-0000-000000000000'
+                id: NEW_SLIDE_ID
             },
             selectedElements: [],
             currentColor: '#fff',

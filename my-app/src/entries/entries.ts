@@ -1,13 +1,6 @@
 export type {Presentation, Slide, CurrentState, Size, Text, Element, Position, Primitive}
 export {ElementType}
 
-type Text = {
-    textString: string,
-    textSize: number,
-    textFont: string,
-    textColor: string
-};
-
 type Position = {
     x: number,
     y: number
@@ -18,6 +11,13 @@ type Size = {
     height: number
 }
 
+type Text = Element & {
+    textString: string,
+    textSize: number,
+    textFont: string,
+    textColor: string
+};
+
 type ImageElement = {
     imageUrl: string,
 };
@@ -26,7 +26,7 @@ type Background = ImageElement|string;
 
 type PrimitiveType = 'circle'|'rectangle'|'triangle'|'polygon'|'line'
 
-type Primitive = Element &  {
+type Primitive = Element & {
     primitiveType: PrimitiveType,
     primitiveBorderColor: string,
     primitiveFillColor: string

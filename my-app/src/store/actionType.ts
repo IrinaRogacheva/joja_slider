@@ -1,7 +1,6 @@
-import {Presentation} from "../entries/entries"
-
 export type ActionType = {
-    type: string
+    type: string,
+    payload: any
 }
 
 export type DispatchType = (args: ActionType) => ActionType

@@ -1,12 +1,16 @@
 import React from 'react'
+import {connect} from 'react-redux'
+import {Presentation} from '../entries/entries'
 //import changePresentationName from '../functions/presentation'
 
-function PresentationName() {
+const mapStateToProps = (state: Presentation) => {
+    return {name: state.name}
+}
+
+function PresentationName({name}: any) {
     return (
-        <p>
-            New presentation
-        </p>
+        <input placeholder={name}/>
     )
 }
 
-export {PresentationName}
+export default connect(mapStateToProps)(PresentationName)

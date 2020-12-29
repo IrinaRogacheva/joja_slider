@@ -1,2 +1,4 @@
 node_modules
 .idea
+.vscode
+my-app/node_modules

@@ -1,6 +1,6 @@
-import React from 'react';
-import './App.css';
-import {PresentationName} from './components/PresentationName';
+import React from 'react'
+import './App.css'
+import PresentationName from './components/PresentationName'
 import WorkArea from './components/WorkArea'
 
 //import Hello from './chto-to'
