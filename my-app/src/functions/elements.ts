@@ -53,14 +53,14 @@ function moveElement(presentation: Presentation, position: Position): Presentati
         model: {...presentation.model,
             slidesList: changeSlideInSlidesList(presentation, currentSlide),
             currentSlide: currentSlide,
-            selectedElementsId: []
+            selectedElementsId: selectedElements
         }
     } as Presentation
 }
 
 function changeElementSize(presentation: Presentation, elementSize: Size): Presentation {
     const elementsArray = presentation.model.currentSlide.elements.slice()
-    const selectedElements = presentation.model.selectedElementsId
+    const selectedElements = presentation.model.selectedElementsId.slice()
     for (let i = 0; i < elementsArray.length; i++) {
         if(elementsArray[i].id === selectedElements[0])
         {
@@ -70,14 +70,13 @@ function changeElementSize(presentation: Presentation, elementSize: Size): Prese
             }
             break
         }
-    
     }
     const currentSlide = changeCurSlide(presentation, elementsArray)
     return {...presentation,
         model: {...presentation.model,
             slidesList: changeSlideInSlidesList(presentation, currentSlide),
             currentSlide: currentSlide,
-            selectedElementsId: []
+            selectedElementsId: selectedElements
         }
     } as Presentation
 }
