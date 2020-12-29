@@ -1,12 +1,10 @@
 import {CHANGE_PRESENTATION_NAME} from './actions'
 
-function changePresentationName(slideId) { 
+function changePresentationName(name: string) { 
     return {
         type: CHANGE_PRESENTATION_NAME, 
-        slideId
+        name
     }
 }
 
-///////////////////////////////////////
-
-dispatch(gotoSlide('slideId'))
+export {changePresentationName}

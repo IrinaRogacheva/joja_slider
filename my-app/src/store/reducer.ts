@@ -4,7 +4,7 @@ import {ActionType} from './actionType'
 import {createPresentation} from '../functions/presentation'
 import {Reducer} from 'redux'
 
-const reducer: Reducer = (
+const reducer: Reducer<any, ActionType> = (
     state: Presentation,
     action: ActionType
 ): Presentation => {
