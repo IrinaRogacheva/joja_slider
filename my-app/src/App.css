@@ -1,45 +1,121 @@
 .App {
-  display: flex; 
+  display: flex;
   height: 100%;
-  background-color: #e9ce59;
-}
-
-.Main {
+  background-color: #1d1c18;
+  }
+  
+  .Main {
   text-align: center;
   display: flex;
-  background-color: #000000;
+  background-color: #1d1c18;
   flex-direction: column;
   height: 100vh;
   width: 80%;
-}
-
-.Menu {
+  }
+  
+  .Main2 {
+  flex-direction: row;
+  }
+  
+  .Icon {
+  width: 30px;
+  }
+  
+  .Menu {
   width: 20%;
-}
-
-.WorkArea {
+  }
+  
+  .WorkArea {
   width: 100%;
   height: 80vh;
   background-color: #000000;
-}
-
-.SlidesList {
+  }
+  
+  .WorkArea2 {
+  width: 70%;
+  height: 70vh;
+  margin-top: 30px;
+  background-color: #fcfcfc;
+  }
+  
+  .SlidesList {
   width: 100%;
   height: 20vh;
   background-color: #cfbb03;
-}
-
-.Slide {
-  width: 30vh;
-  height: 15vh;
+  }
+  
+  .Slide {
+  width: 200px;
+  height: 130px;
   background-color: #fafaf9;
-  display: flex; 
+  display: flex;
   margin-top: 20px;
-  margin-left: 30px;  
-}
-
-.Slide {
-  display: flex; 
-  width: 100%;
-  height: 100%;
-}
+  margin-left: 50px;
+  }
+  
+  .NamePresentation {
+  width: 300px;
+  height: 40px;
+  margin-left: 20px;
+  margin-top: 20px;
+  outline: none;
+  border: none;
+  background: none;
+  color:#fafaf9;
+  font-size: 30px;
+  font-family: Tahoma;
+  }
+  
+  .IconButton {
+  margin-top: 20px;
+  margin-left: 40px;
+  width: 40px;
+  height: 40px;
+  border: none;
+  }
+  
+  .Icon {
+  background: url(./icons/icons8-создать-новый-48.png);
+  background-size: 40px 40px;
+  }
+  
+  .IconButton:focus
+  {
+  outline: none;
+  }
+  
+  .IconButton:hover
+  {
+  cursor: pointer;
+  filter: brightness(3);
+  }
+  
+  .Left {
+  background: url(./icons/icons8-u---образная-стрелка-влево-50.png);
+  background-size: 40px 40px;
+  }
+  
+  .Right {
+  background: url(./icons/icons8-u---образная-стрелка-вправо-50.png);
+  background-size: 40px 40px;
+  }
+  
+  .kr {
+  background: url(./icons/icons8-заполненный-круг-50.png);
+  background-size: 40px 40px;
+  }
+  
+  .tr {
+  background: url(./icons/icons8-треугольник-50.png);
+  background-size: 40px 40px;
+  }
+  
+  .kv {
+  background: url(./icons/icons8-прямоугольник-50.png);
+  background-size: 40px 40px;
+  }
+  
+  .Picture {
+  background: url(./icons/icons8-очень-большие-иконки-50.png);
+  background-size: 40px 40px;
+  }
