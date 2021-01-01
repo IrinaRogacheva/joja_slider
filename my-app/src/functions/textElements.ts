@@ -1,6 +1,5 @@
 import {Presentation, Element, Slide, Text, ElementType} from '../entries/entries'
 
-
 function changeTextSize(presentation: Presentation, textSize: number): Presentation {
     const copySlidesList: Array<Slide> = presentation.model.slidesList.slice()
     const currentSlide: Slide = {...presentation.model.currentSlide}

@@ -1,10 +1,12 @@
 import React from 'react';
 import './App.css';
+import AddSlide from './components/AddSlide';
 //import {addSlide} from './functions/slides'
 //import AddSlidik from './addSlides'
 //import Slidik from './slidik'
 //import WorkArea from './components/WorkArea'
 import PresentationName from './components/PresentationName'
+import Slides from './components/Slides'
 
 function App() {
 
@@ -24,10 +26,8 @@ return (
       <svg className="WorkArea2"></svg>
     </div>
   </div>
-  {/* <AddSlidik/> */}
-  <div>
-    {/* <Slidik/> */}
-  </div>
+  <AddSlide/>
+  <Slides/>
   </div>
   );
 }

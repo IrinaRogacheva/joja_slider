@@ -1,3 +1,4 @@
 export const CREATE_PRESENTATION = 'CREATE_PRESENTATION'
 export const CHANGE_NAME = 'CHANGE_NAME'
 export const ADD_SLIDE = 'ADD_SLIDE'
+export const DELETE_SLIDE = 'DELETE_SLIDE'

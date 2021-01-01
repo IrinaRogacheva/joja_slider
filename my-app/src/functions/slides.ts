@@ -28,36 +28,69 @@ function addSlide(presentation: Presentation): Presentation {
     } as Presentation  
 }
 
-function moveSlide(presentation: Presentation, index: number, newIndex: number): Presentation {
+function moveSlide(presentation: Presentation, newIndex: number): Presentation {
+    const newId: string = presentation.model.slidesList[newIndex].id
     const copySlides: Array<Slide> = presentation.model.slidesList.slice()
-    const moveElement: Slide = copySlides.splice(index, 1)[0]
-    copySlides.splice(newIndex, 0, moveElement)
+    const moveElements: Array<Slide> = []
+    const selectedSlidesId: Array<string> = presentation.model.selectedSlidesId.slice()
+    for (let i = 0; i < copySlides.length; i++) {
+        if (selectedSlidesId.includes(copySlides[i].id)) {
+            const tempMoveElement: Slide = copySlides.splice(i, 1)[0]
+            moveElements.push(tempMoveElement)
+            i--
+        }
+    }
+    let index: number = 0
+    for (let i = 0; i < copySlides.length; i++) {
+        if (copySlides[i].id === newId) {
+            index = i
+            break
+        }
+    }
+
+    for (let i = index; i < index + moveElements.length; i++) {
+        copySlides.splice(i, 0, moveElements[i-index])
+    }
     return {...presentation,
         model: {...presentation.model,
             slidesList: copySlides
         }
-    } as Presentation
+    } as Presentation     
 }
 
 function deleteSlide(presentation: Presentation): Presentation {
     const copySlides: Array<Slide> = presentation.model.slidesList.slice()
-    const currentSlideId: string = presentation.model.currentSlide.id
-    let newCurrentSlide: Slide = copySlides[0]
+    const selectedSlidesId: Array<string> = presentation.model.selectedSlidesId
+    let currentSlide: Slide = presentation.model.currentSlide
+    let currentSlideIndex: number = 0
     for (let i = 0; i < copySlides.length; i++) {
-        if(copySlides[i].id === currentSlideId)
-        {
-            const index = copySlides.indexOf(copySlides[i])
-            copySlides.splice(index, 1)
-            newCurrentSlide = copySlides[i]
+        if (copySlides[i].id === currentSlide.id) {
+            currentSlideIndex = i
             break
         }
     }
+    console.log(currentSlideIndex)
+    for (let i = 0; i < copySlides.length; i++) {
+        if (selectedSlidesId.includes(copySlides[i].id)) {
+            copySlides.splice(i, 1)
+            i--
+        }
+    }
+    if (currentSlideIndex < copySlides.length) {
+        currentSlide = {...copySlides[currentSlideIndex]}
+    }
+    else {
+        currentSlide = {...copySlides[copySlides.length-1]}
+    }
+
+    console.log(currentSlide.id)
     return {...presentation,
         model: {...presentation.model,
-            slidesList: copySlides,
-            currentSlide: newCurrentSlide
+            currentSlide: currentSlide,
+            selectedSlidesId: [],
+            slidesList: copySlides
         }
-    } as Presentation  
+    } as Presentation 
 }
 
 function changeBackgroundColor(presentation: Presentation, backgroundColor: string): Presentation {
