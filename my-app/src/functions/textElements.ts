@@ -1,18 +1,17 @@
 import {Presentation, Element, Slide, Text, ElementType} from '../entries/entries'
 
+
 function changeTextSize(presentation: Presentation, textSize: number): Presentation {
     const copySlidesList: Array<Slide> = presentation.model.slidesList.slice()
     const currentSlide: Slide = {...presentation.model.currentSlide}
     const copyElements: Array<Element> = presentation.model.currentSlide.elements.slice()
     const selectedElements: Array<string> = presentation.model.selectedElementsId.slice()
-    for (let i = 0; i < selectedElements.length; i++) {
-        for (let j = 0; j < copyElements.length; j++) {
-            if (copyElements[j].id === selectedElements[i]) {
-                if (copyElements[j].elementType === ElementType.text) {
-                    (copyElements[j] as Text) = {
-                        ...(copyElements[j] as Text),
-                        textSize: textSize
-                    }
+    for (let i = 0; i < copyElements.length; i++) {
+        if (selectedElements.includes(copyElements[i].id)) {
+            if (copyElements[i].elementType === ElementType.text) {
+                (copyElements[i] as Text) = {
+                    ...(copyElements[i] as Text),
+                    textSize: textSize
                 }
             }
         }
@@ -39,14 +38,12 @@ function changeTextFont(presentation: Presentation, textFont: string): Presentat
     const currentSlide: Slide = {...presentation.model.currentSlide}
     const copyElements: Array<Element> = presentation.model.currentSlide.elements.slice()
     const selectedElements: Array<string> = presentation.model.selectedElementsId.slice()
-    for (let i = 0; i < selectedElements.length; i++) {
-        for (let j = 0; j < copyElements.length; j++) {
-            if (copyElements[j].id === selectedElements[i]) {
-                if (copyElements[j].elementType === ElementType.text) {
-                    (copyElements[j] as Text) = {
-                        ...(copyElements[j] as Text),
-                        textFont: textFont
-                    }
+    for (let i = 0; i < copyElements.length; i++) {
+        if (selectedElements.includes(copyElements[i].id)) {
+            if (copyElements[i].elementType === ElementType.text) {
+                (copyElements[i] as Text) = {
+                    ...(copyElements[i] as Text),
+                    textFont: textFont
                 }
             }
         }
@@ -73,14 +70,12 @@ function changeTextColor(presentation: Presentation,  textColor: string): Presen
     const currentSlide: Slide = {...presentation.model.currentSlide}
     const copyElements: Array<Element> = presentation.model.currentSlide.elements.slice()
     const selectedElements: Array<string> = presentation.model.selectedElementsId.slice()
-    for (let i = 0; i < selectedElements.length; i++) {
-        for (let j = 0; j < copyElements.length; j++) {
-            if (copyElements[j].id === selectedElements[i]) {
-                if (copyElements[j].elementType === ElementType.text) {
-                    (copyElements[j] as Text) = {
-                        ...(copyElements[j] as Text),
-                        textColor: textColor
-                    }
+    for (let i = 0; i < copyElements.length; i++) {
+        if (selectedElements.includes(copyElements[i].id)) {
+            if (copyElements[i].elementType === ElementType.text) {
+                (copyElements[i] as Text) = {
+                    ...(copyElements[i] as Text),
+                    textColor: textColor
                 }
             }
         }
@@ -101,7 +96,6 @@ function changeTextColor(presentation: Presentation,  textColor: string): Presen
         }
     } as Presentation  
 }
-
 
 export {
     changeTextSize,

@@ -9,7 +9,7 @@ function addSlide(presentation: Presentation): Presentation {
     const newSlide: Slide = {
         background: {...presentation.model.currentSlide}.background,
         elements: [],
-        id: NEW_SLIDE_ID
+        id: uuidv4()
     }
     const copySlides: Array<Slide> = presentation.model.slidesList.slice()
     for (let i = 0; i < copySlides.length; i++) {
@@ -115,10 +115,19 @@ function changeCurrentSlide(presentation: Presentation, slideIndex: number): Pre
     } as Presentation
 }
 
+function selectSlides(presentation: Presentation, slideIdArray: Array<string>): Presentation {
+    return {...presentation,
+        model: {...presentation.model,
+            selectedSlidesId: slideIdArray
+        }
+    } as Presentation
+}
+
 export {
     moveSlide,
     deleteSlide,
     addSlide,
     changeBackgroundColor,
-    changeCurrentSlide
+    changeCurrentSlide,
+    selectSlides
 }

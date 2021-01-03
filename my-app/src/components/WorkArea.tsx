@@ -1,19 +1,25 @@
-import React from 'react'
-import {connect} from 'react-redux'
-import { Presentation } from '../entries/entries'
 
-const mapStateToProps = (state: Presentation) => {
+import React from 'react';
+import {Presentation} from '../entries/entries'
+//import {CHANGE_BACKGROUND_SLIDE} from '../store/action'
+import {connect} from 'react-redux'
+
+const stateOne = (state: Presentation) => {
     return {
         state: state
     }
 }
 
-function WorkArea() {
+function WorkArea(props: any) {
+    let slide = props.state.model.currentSlide
+    const currentSlide = <div key={slide.id}>
+            <svg className="CurrentSlide" style={{background: slide.background}}></svg>
+        </div>
     return (
         <div>
-        work area
+            {currentSlide}
         </div>
     )
 }
 
-export default connect(mapStateToProps)(WorkArea)
+export default connect(stateOne)(WorkArea)

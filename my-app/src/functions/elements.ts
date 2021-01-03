@@ -1,13 +1,18 @@
 import {Presentation, Element, Slide, Size, Position} from '../entries/entries'
+import { v4 as uuidv4 } from 'uuid'
        
 function addElement(presentation: Presentation, element: Element): Presentation {
     const elementsArray = presentation.model.currentSlide.elements.slice()
+    element = {
+        ...element,
+        id: uuidv4()
+        }
     elementsArray.push(element)
     const currentSlide = changeCurSlide(presentation, elementsArray)
     return {...presentation,
         model: {...presentation.model,
             slidesList: changeSlideInSlidesList(presentation, currentSlide),
-            currentSlide: currentSlide
+            currentSlide: currentSlide,
         }
     } as Presentation
 }

@@ -1,14 +1,22 @@
 import React from 'react';
 import './App.css';
-import AddSlide from './components/AddSlide';
-//import {addSlide} from './functions/slides'
-//import AddSlidik from './addSlides'
-//import Slidik from './slidik'
-//import WorkArea from './components/WorkArea'
+import {connect} from 'react-redux'
+import { Presentation } from './entries/entries';
+import {useDragAndDrop} from '../src/hooks/useDragAndDrop'
 import PresentationName from './components/PresentationName'
+import WorkArea from './components/WorkArea'
 import Slides from './components/Slides'
+import AddSlide from './components/AddSlide';
+import AddPrimitiveCircle from './components/AddPrimitiveCircle'
 
-function App() {
+const mapStateToProps = (state: Presentation) => {
+  return {
+      state: state
+  }
+}
+
+function App(props: any) {
+  useDragAndDrop(props.state)  
 
 return (
 <div className="App">
@@ -21,9 +29,12 @@ return (
       <button className='IconButton kr'></button>
       <button className='IconButton kv'></button>
       <button className='IconButton Picture'></button>
+      {/*<AddPrimitiveTriangle/>*/}
+      <AddPrimitiveCircle/>
+       {/*<AddPrimitiveRectangle/>*/}
     </div>
     <div className="WorkArea">
-      <svg className="WorkArea2"></svg>
+      <WorkArea/>
     </div>
   </div>
   <AddSlide/>
@@ -32,4 +43,4 @@ return (
   );
 }
 
-export default App;
+export default connect(mapStateToProps)(App)

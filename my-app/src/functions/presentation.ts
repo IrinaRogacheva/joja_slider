@@ -49,13 +49,30 @@ function openCloudPresentation(urlFile: string): Presentation {
 function exportPresentation(presentation: Presentation): string {
     let pdfFile: string
     return pdfFile
+} **/
+
+function saveLocalPresentation(presentation: Presentation): void {
+    const jsonFile = JSON.stringify(presentation)
+    console.log(jsonFile)
+    const jsonFileName = presentation.model.name + '.json'
+    let file = new Blob([jsonFile], {type: 'json'})
+    if (window.navigator.msSaveOrOpenBlob) {
+        window.navigator.msSaveOrOpenBlob(file, jsonFileName)
+    } else {
+        let url = URL.createObjectURL(file)
+        let a = document.createElement('a')
+        a.href = url
+        a.download = jsonFileName
+        document.body.appendChild(a)
+        a.click()
+        setTimeout(function() {
+            document.body.removeChild(a)
+            window.URL.revokeObjectURL(url)
+        }, 0)
+    }
 }
 
-function saveLocalPresentation(presentation: Presentation): string {
-    const jsonFile = JSON.stringify(presentation) 
-    return jsonFile
-}
-
+/**
 function saveCloudPresentation(presentation: Presentation): string {
     let urlFile: string
     return urlFile
@@ -69,9 +86,9 @@ function previewPresentation(presentation: Presentation): Array<Slide> {
 export {
     createPresentation,
     changePresentationName,
+    saveLocalPresentation,
     /**openLocalPresentation,
     openCloudPresentation,
-    saveLocalPresentation,
     saveCloudPresentation,
     exportPresentation,
     previewPresentation*/

@@ -3,7 +3,9 @@ import * as actionTypes from './actions'
 import {ActionType} from './actionType'
 import {createPresentation, changePresentationName} from '../functions/presentation'
 import {Reducer} from 'redux'
-import {addSlide} from '../functions/slides';
+import {addSlide, selectSlides} from '../functions/slides'
+import {addElement} from '../functions/elements'
+import {PRIMITIVE_CIRCLE, PRIMITIVE_TRIANGLE, PRIMITIVE_RECTANGLE} from '../entries/constants'
 
 const reducer: Reducer<any, ActionType> = (
     state: Presentation,
@@ -16,6 +18,14 @@ const reducer: Reducer<any, ActionType> = (
             return changePresentationName(state, action.payload)
         case actionTypes.ADD_SLIDE:
             return addSlide(state)    
+        case actionTypes.SELECT_SLIDES:
+            return selectSlides(state, action.payload)  
+        case actionTypes.ADD_PRIMITIVE_CIRCLE:
+            return addElement(state, PRIMITIVE_CIRCLE)
+        /*case actionTypes.ADD_PRIMITIVE_TRIANGLE:
+            return addElement(state, PRIMITIVE_TRIANGLE)
+        case actionTypes.ADD_PRIMITIVE_RECTANGLE:
+            return addElement(state, PRIMITIVE_RECTANGLE) */     
     }
 
     return state
