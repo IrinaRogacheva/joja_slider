@@ -40,19 +40,6 @@ width: 30px;
 .Menu {
 width: 20%;
 }
-
-.WorkArea {
-width: 100%;
-height: 80vh;
-background-color: #000000;
-}
-
-  .CurrentSlide {
-  width: 70%;
-  height: 70vh;
-  margin-top: 30px;
-  background-color: #fcfcfc;
-  }
  
 .SlidesList {
 width: 100%;
@@ -68,119 +55,155 @@ margin-top: 20px;
 margin-left: 50px;
 }
 
-.NamePresentation {
-width: 300px;
-height: 40px;
-margin-left: 20px;
-margin-top: 20px;
-outline: none;
-border: none;
-background: none;
-color:#fafaf9;
-font-size: 30px;
-font-family: Tahoma;
-box-sizing: border-box;
-text-align: center;
-border-radius: 5px;
+.WorkArea
+{
+  width: 100%;
+  height: 85vh;
+  background-color: #000000;
 }
 
-.NamePresentation:hover {
+.CurrentSlide
+{
+  width: 70%;
+  height: 70vh;
+  margin-top: 50px;
+  background-color: #fcfcfc;
+}
+
+.NamePresentation
+{
+  width: 300px;
+  height: 40px;
+  margin-left: 20px;
+  margin-top: 20px;
+  outline: none;
+  border: none;
+  background: none;
+  color:#fafaf9;
+  font-size: 30px;
+  font-family: Tahoma;
+  box-sizing: border-box;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.NamePresentation:hover
+{
   border: 1px solid #e5e5e5;
   cursor: pointer;
 }
 
-.NamePresentation:focus {
+.NamePresentation:focus
+{
   box-shadow: 0 0 0 1px #1d1c18, 0 0 0 2px #e5e5e5;
   background: #fff;
   color: #1d1c18;
   cursor: auto;
 }
 
-.IconButton {
-margin-top: 20px;
-margin-left: 40px;
-width: 40px;
-height: 40px;
-border: none;
+.IconButton
+{
+  margin-top: 20px;
+  margin-left: 40px;
+  width: 40px;
+  height: 40px;
+  border: none;
 }
 
-.Icon {
-background: url(./icons/icons8-создать-новый-48.png);
-background-size: 40px 40px;
+.Icon
+{
+  background: url(./icons/icons8-создать-новый-48.png);
+  background-size: 40px 40px;
 }
 
 .IconButton:focus
 {
-outline: none;
+  outline: none;
 }
 
 .IconButton:hover
 {
-cursor: pointer;
-filter: brightness(3);
+  cursor: pointer;
+  filter: brightness(3);
 }
 
-.Left {
-background: url(./icons/icons8-u---образная-стрелка-влево-50.png);
-background-size: 40px 40px;
+.Left
+{
+  background: url(./icons/icons8-u---образная-стрелка-влево-50.png);
+  background-size: 40px 40px;
 }
 
-.Right {
-background: url(./icons/icons8-u---образная-стрелка-вправо-50.png);
-background-size: 40px 40px;
+.Right
+{
+  background: url(./icons/icons8-u---образная-стрелка-вправо-50.png);
+  background-size: 40px 40px;
 }
 
-.kr {
-background: url(./icons/icons8-заполненный-круг-50.png);
-background-size: 40px 40px;
+.kr
+{
+  background: url(./icons/icons8-заполненный-круг-50.png);
+  background-size: 40px 40px;
 }
 
-.tr {
-background: url(./icons/icons8-треугольник-50.png);
-background-size: 40px 40px;
+.tr
+{
+  background: url(./icons/icons8-треугольник-50.png);
+  background-size: 40px 40px;
 }
 
-.kv {
-background: url(./icons/icons8-прямоугольник-50.png);
-background-size: 40px 40px;
+.kv
+{
+  background: url(./icons/icons8-прямоугольник-50.png);
+  background-size: 40px 40px;
 }
 
-.Picture {
-background: url(./icons/icons8-очень-большие-иконки-50.png);
-background-size: 40px 40px;
+.Picture
+{
+  background: url(./icons/icons8-очень-большие-иконки-50.png);
+  background-size: 40px 40px;
 }
 
-  .Slide {
-  width: 200px;
-  height: 130px;
+.Slide
+{
+  width: 240px;
+  height: 140px;
   display: flex;
   margin-top: 10px;
   margin-bottom: 20px;
-  }
+  margin-left: 20px;
+}
+
+.Element
+{
+  width: 20%;
+  height: 20%;
+}
   
-  .SlidesList {
+.SlidesList
+{
   display: flex;
   flex-direction: column;
   width: 300px;
+  margin-top: 20px;
   margin-left: 30px;
   margin-right: 30px;
-  height: 650px;
+  height: 870px;
   border: 4px;
   border-color: #cfbb03;
   overflow-y: scroll;
   overflow-x: none;
   background: #1d1c18;
   cursor: pointer;
+}
   
-  }
-  
-  .slider {
+.slider
+{
   width: 200px;
   max-height: 20px;
   border: 4px '#fff';
+}
   
-  }
-  
-  li {
+li
+{
   list-style-type: none;
-  }
+}

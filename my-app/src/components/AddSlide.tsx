@@ -2,7 +2,6 @@ import React, { Dispatch } from 'react';
 import {Presentation} from '../entries/entries'
 import {ADD_SLIDE} from '../store/actions'
 import {connect} from 'react-redux'
-//import {addSlide} from './functions/slides';
 
 const stateOne = (state: Presentation) => {
     return {state: state}
@@ -14,8 +13,7 @@ const dispatchOne = (dispatch: Dispatch<any>) => {
     }
 }
 
-function AddSlidik(props: any) {
-    // const dispatch: Dispatch<any> = useDispatch()
+function AddSlide(props: any) {
     return (
     <div>
         <button className='IconButton Icon' onClick={()=>props.addSlide()}></button>
@@ -23,4 +21,4 @@ function AddSlidik(props: any) {
     )
 }
 
-export default connect(stateOne, dispatchOne)(AddSlidik)
+export default connect(stateOne, dispatchOne)(AddSlide)

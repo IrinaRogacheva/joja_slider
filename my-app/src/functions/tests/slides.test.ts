@@ -10,6 +10,11 @@ test('addSlide function', () => {
                 background: CONSTANTS.WHITE,
                 elements: [],
                 id: '0'
+            },
+            {
+                background: CONSTANTS.WHITE,
+                elements: [],
+                id: '1'
             }],
             currentSlide: {
                 background: CONSTANTS.WHITE,
@@ -38,6 +43,11 @@ test('addSlide function', () => {
                 {
                     background: CONSTANTS.WHITE,
                     elements: [],
+                    id: '1'
+                },
+                {
+                    background: CONSTANTS.WHITE,
+                    elements: [],
                     id: NEW_SLIDE_ID
                 }
             ],
@@ -46,7 +56,7 @@ test('addSlide function', () => {
                 elements: [],
                 id: NEW_SLIDE_ID
             },
-            selectedSlidesId: [],
+            selectedSlidesId: [NEW_SLIDE_ID],
             selectedElementsId: []
         },
         view: {
@@ -284,7 +294,7 @@ test('changeBackgroundColor function', () => {
 })
 
 test('changeCurrentSlidefunction', () => {
-    const slideIndex = 1
+    const slideId = '1'
     const presentationBefore: Presentation = {
         model: {
             name: CONSTANTS.DEFAULT_PRESENTATION_NAME,
@@ -305,7 +315,7 @@ test('changeCurrentSlidefunction', () => {
                 elements: [],
                 id: '0'
             },
-            selectedSlidesId: [],
+            selectedSlidesId: ['0'],
             selectedElementsId: []
         },
         view: {
@@ -334,7 +344,7 @@ test('changeCurrentSlidefunction', () => {
                 elements: [],
                 id: '1'
             },
-            selectedSlidesId: [],
+            selectedSlidesId: ['1'],
             selectedElementsId: []
         },
         view: {
@@ -343,5 +353,5 @@ test('changeCurrentSlidefunction', () => {
             textFont: CONSTANTS.DEFAULT_TEXT_FONT
         } 
     }
-    expect(changeCurrentSlide(presentationBefore, slideIndex)).toEqual(presentationAfter)
+    expect(changeCurrentSlide(presentationBefore, slideId)).toEqual(presentationAfter)
 })

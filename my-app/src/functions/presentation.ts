@@ -1,58 +1,74 @@
 import {Presentation} from '../entries/entries'
 import { v4 as uuidv4 } from 'uuid'
 import * as CONSTANTS from '../entries/constants'
-export const NEW_SLIDE_ID = uuidv4()
+import { Dispatch } from 'react'
+import { OPEN_PRESENTATION } from '../store/actions'
+export const NEW_SLIDE_ID = uuidv4() 
 
-function createPresentation(): Presentation {
-    return {
-        model: {
-            name: CONSTANTS.DEFAULT_PRESENTATION_NAME,
-            slidesList: [{
-                background: CONSTANTS.WHITE,
-                elements: [],
-                id: NEW_SLIDE_ID
-            }],
-            currentSlide: {
-                background: CONSTANTS.WHITE,
-                elements: [],
-                id: NEW_SLIDE_ID
-            },
-            selectedSlidesId: [],
-            selectedElementsId: []
-        },
-        view: {
-            color: CONSTANTS.WHITE,
-            textSize: CONSTANTS.DEFAULT_TEXT_SIZE,
-            textFont: CONSTANTS.DEFAULT_TEXT_FONT
+function createPresentation(): Presentation { 
+    const newSlideId: string = uuidv4()
+    return { 
+        model: { 
+            name: CONSTANTS.DEFAULT_PRESENTATION_NAME, 
+            slidesList: [{ 
+                background: CONSTANTS.WHITE, 
+                elements: [], 
+                id: newSlideId 
+            }], 
+            currentSlide: { 
+                background: CONSTANTS.WHITE, 
+                elements: [], 
+                id: newSlideId 
+            }, 
+            selectedSlidesId: [], 
+            selectedElementsId: [] 
+        }, 
+        view: { 
+            color: CONSTANTS.WHITE, 
+            textSize: CONSTANTS.DEFAULT_TEXT_SIZE, 
+            textFont: CONSTANTS.DEFAULT_TEXT_FONT 
         } 
     } as Presentation
-}
+} 
 
-function changePresentationName(presentation: Presentation, newName: string): Presentation {
-    return {...presentation,
-        model: {...presentation.model,
-            name: newName}
+function changePresentationName(presentation: Presentation, newName: string): Presentation { 
+    return {
+        ...presentation, model: {
+            ...presentation.model, name: newName
+        } 
     }
 }
 
-/**
-function openLocalPresentation(jsonFile: string): Presentation {
-    const presentation: Presentation = JSON.parse(jsonFile)
-    return presentation
+
+function openPresentation(newPr: Presentation): Presentation {
+    return newPr
 }
 
-function openCloudPresentation(urlFile: string): Presentation {
-    let presentation: Presentation
-    return presentation
+function openLocalPresentation(evt: React.ChangeEvent<HTMLInputElement>, dispatch: Dispatch<any>) {
+    console.log('vse ploho')
+    let file = new FileReader() 
+    if (evt.target.files != null) {
+     file.onload = function() {   
+     if (typeof(file.result) === 'string') {   
+        dispatch({type: OPEN_PRESENTATION, payload: JSON.parse(file.result) as Presentation})
+        console.log(JSON.parse(file.result))
+    }}
+    file.readAsText(evt.target.files[0]) 
+ }
 }
+ 
+//function openCloudPresentation(urlFile: string): Presentation {
+//    let presentation: Presentation
+//    return presentation
+//}
 
-function exportPresentation(presentation: Presentation): string {
+/*function exportPresentation(presentation: Presentation): string {
     let pdfFile: string
     return pdfFile
-} **/
+}*/
 
 function saveLocalPresentation(presentation: Presentation): void {
-    const jsonFile = JSON.stringify(presentation)
+    const jsonFile = JSON.stringify(presentation) 
     console.log(jsonFile)
     const jsonFileName = presentation.model.name + '.json'
     let file = new Blob([jsonFile], {type: 'json'})
@@ -72,8 +88,7 @@ function saveLocalPresentation(presentation: Presentation): void {
     }
 }
 
-/**
-function saveCloudPresentation(presentation: Presentation): string {
+/*function saveCloudPresentation(presentation: Presentation): string {
     let urlFile: string
     return urlFile
 }
@@ -81,15 +96,16 @@ function saveCloudPresentation(presentation: Presentation): string {
 function previewPresentation(presentation: Presentation): Array<Slide> {
     let slideshow: Array<Slide> 
     return slideshow
-}
-**/
+}*/
+
 export {
     createPresentation,
+    openLocalPresentation,
+    openPresentation,
     changePresentationName,
+    //openCloudPresentation,
     saveLocalPresentation,
-    /**openLocalPresentation,
-    openCloudPresentation,
-    saveCloudPresentation,
-    exportPresentation,
-    previewPresentation*/
+    //saveCloudPresentation,
+    //exportPresentation,
+    //previewPresentation
 }

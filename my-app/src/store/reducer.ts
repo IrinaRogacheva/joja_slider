@@ -1,11 +1,11 @@
 import {Presentation} from '../entries/entries'
 import * as actionTypes from './actions'
 import {ActionType} from './actionType'
-import {createPresentation, changePresentationName} from '../functions/presentation'
+import {createPresentation, changePresentationName, openPresentation} from '../functions/presentation'
 import {Reducer} from 'redux'
-import {addSlide, selectSlides} from '../functions/slides'
-import {addElement} from '../functions/elements'
-import {PRIMITIVE_CIRCLE, PRIMITIVE_TRIANGLE, PRIMITIVE_RECTANGLE} from '../entries/constants'
+import {addSlide, selectSlides, deleteSlide, changeBackgroundColor, changeCurrentSlide} from '../functions/slides';
+import {addElement} from '../functions/elements';
+import {PRIMITIVE_CIRCLE, PRIMITIVE_TRIANGLE, PRIMITIVE_RECTANGLE} from '../entries/constants';
 
 const reducer: Reducer<any, ActionType> = (
     state: Presentation,
@@ -25,7 +25,20 @@ const reducer: Reducer<any, ActionType> = (
         /*case actionTypes.ADD_PRIMITIVE_TRIANGLE:
             return addElement(state, PRIMITIVE_TRIANGLE)
         case actionTypes.ADD_PRIMITIVE_RECTANGLE:
-            return addElement(state, PRIMITIVE_RECTANGLE) */     
+            return addElement(state, PRIMITIVE_RECTANGLE) */ 
+        case actionTypes.CHANGE_CURRENT_SLIDE:
+            return changeCurrentSlide(state, action.payload) 
+        case actionTypes.DELETE_SLIDE:
+            return deleteSlide(state) 
+        case actionTypes.CHANGE_BACKGROUND_SLIDE:
+            return changeBackgroundColor(state, action.payload)
+        case actionTypes.ADD_PRIMITIVE_TRIANGLE:
+            return addElement(state, PRIMITIVE_TRIANGLE)
+        case actionTypes.ADD_PRIMITIVE_RECTANGLE:
+            return addElement(state, PRIMITIVE_RECTANGLE)  
+        case actionTypes.OPEN_PRESENTATION:
+            return openPresentation(action.payload)    
+            
     }
 
     return state

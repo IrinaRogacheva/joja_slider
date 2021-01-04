@@ -106,19 +106,32 @@ function changeBackgroundColor(presentation: Presentation, backgroundColor: stri
     } as Presentation 
 }
 
-function changeCurrentSlide(presentation: Presentation, slideIndex: number): Presentation {
-    const newCurrentSlide = {...presentation.model.slidesList[slideIndex]}
+function changeCurrentSlide(presentation: Presentation, slideId: string): Presentation {
+    const copySlides: Array<Slide> = presentation.model.slidesList.slice()
+    let newCurrentSlide: Slide = {...presentation.model.currentSlide}
+    for (let i = 0; i < copySlides.length; i++) {
+        if (copySlides[i].id === slideId) {
+            newCurrentSlide = copySlides[i]
+            break
+        }
+    }
     return {...presentation,
         model: {...presentation.model,
-            currentSlide: newCurrentSlide
+            currentSlide: newCurrentSlide,
+            selectedSlidesId: [newCurrentSlide.id]
         }
     } as Presentation
 }
 
-function selectSlides(presentation: Presentation, slideIdArray: Array<string>): Presentation {
+function selectSlides(presentation: Presentation, slideId: string): Presentation {
+    if (presentation.model.selectedSlidesId.includes(slideId)) {
+        return presentation
+    } 
+    const copySelectedSlidesId: Array<string> = presentation.model.selectedSlidesId.slice()
+    copySelectedSlidesId.splice(copySelectedSlidesId.length, 0, slideId)
     return {...presentation,
         model: {...presentation.model,
-            selectedSlidesId: slideIdArray
+            selectedSlidesId: copySelectedSlidesId
         }
     } as Presentation
 }
