@@ -1,5 +1,16 @@
-export type {Presentation, Slide, Size, Text, Element, Position, Primitive}
-export {ElementType}
+export type {
+    Presentation, 
+    Slide, 
+    Size, 
+    Text, 
+    Element, 
+    Position, 
+    Primitive, 
+    ImageElement,
+    ColorString
+}
+
+export {ElementType, BackgroundType} 
 
 type Position = {
     x: number,
@@ -11,8 +22,6 @@ type Size = {
     height: number
 }
 
-type Background = ImageElement|string;
-
 enum ElementType {text, primitive, image}
 
 type Text = Element & {
@@ -23,10 +32,18 @@ type Text = Element & {
     textColor: string
 };
 
-type ImageElement = {
+enum BackgroundType {image, string}
+
+type ColorString = BackgroundType & {
+    color: string,
+    type: BackgroundType.string
+}
+
+type ImageElement = Element & BackgroundType & {
     elementType: ElementType.image,
     imageUrl: string,
-};
+    type: BackgroundType.image
+} 
 
 type PrimitiveType = 'circle'|'rectangle'|'triangle'|'polygon'|'line'
 
@@ -45,7 +62,7 @@ type Element = {
 };
 
 type Slide = {
-    background: Background,
+    background: BackgroundType,
     elements: Array<Element>,  
     id: string
 };

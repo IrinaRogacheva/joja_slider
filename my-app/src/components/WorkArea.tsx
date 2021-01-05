@@ -1,6 +1,5 @@
-
 import React from 'react';
-import {Presentation} from '../entries/entries'
+import {Presentation, ColorString} from '../entries/entries'
 import {connect} from 'react-redux'
 import Elements from './Elements'
 
@@ -12,14 +11,14 @@ const stateOne = (state: Presentation) => {
 
 function WorkArea(props: any) {
     let slide = props.state.model.currentSlide
+    let slideBackground = (slide.background as ColorString).color
     const currentSlide = <div style={{color: '#fff'}}>
-        {slide.id}
-            <svg width="1200" height="700" className="CurrentSlide" style={{background: slide.background}}>
+            <svg width="1200" height="700" className="CurrentSlide" style={{background: '#' + slideBackground}}>
                 <Elements/>
             </svg>
         </div>
     return (
-        <div>
+        <div className="WorkArea">
             {currentSlide}
         </div>
     )

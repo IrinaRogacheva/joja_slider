@@ -13,6 +13,7 @@ function addElement(presentation: Presentation, element: Element): Presentation 
         model: {...presentation.model,
             slidesList: changeSlideInSlidesList(presentation, currentSlide),
             currentSlide: currentSlide,
+            selectedElementsId: [element.id]
         }
     } as Presentation
 }

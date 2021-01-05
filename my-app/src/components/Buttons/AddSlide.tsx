@@ -1,6 +1,6 @@
 import React, { Dispatch } from 'react';
-import {Presentation} from '../entries/entries'
-import {ADD_SLIDE} from '../store/actions'
+import {Presentation} from '../../entries/entries'
+import {ADD_SLIDE} from '../../store/actions'
 import {connect} from 'react-redux'
 
 const stateOne = (state: Presentation) => {
@@ -15,9 +15,7 @@ const dispatchOne = (dispatch: Dispatch<any>) => {
 
 function AddSlide(props: any) {
     return (
-    <div>
         <button className='IconButton Icon' onClick={()=>props.addSlide()}></button>
-    </div>
     )
 }
 

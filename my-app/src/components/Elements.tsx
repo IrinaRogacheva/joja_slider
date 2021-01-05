@@ -1,11 +1,21 @@
-import {Slide, Element, ElementType, Primitive} from '../entries/entries'
+import {Slide, Element, ElementType, Primitive, ImageElement, Text} from '../entries/entries'
 import {connect} from 'react-redux'
+import {Dispatch} from 'react'
+import {openPicture} from '../functions/imageElements'
+import {CHANGE_TEXT} from '../store/actions'
 
 const stateOne = (state: Slide) => {
     return {state: state}
 }
 
-function Elem(e: Element, scale: number) {
+const dispatchOne = (dispatch: Dispatch<any>) => {
+    return {
+        openPicture: (e: React.ChangeEvent<HTMLInputElement>) => openPicture(e, dispatch),
+        addText: (e: string) => dispatch({type: CHANGE_TEXT, payload: e}),
+    }
+  }
+
+function Elem(e: Element, scale: number, props: any) {
     if (e.elementType === ElementType.primitive) {
         const borderColor = (e as Primitive).primitiveBorderColor
         const fillColor = (e as Primitive).primitiveFillColor
@@ -36,19 +46,38 @@ function Elem(e: Element, scale: number) {
                 <rect key={e.id} x={""+x} y={""+y} width={""+width} height={""+height} fill={"#"+fillColor} stroke={"#"+borderColor} strokeWidth={""+strokeWidth} />
             )
         }
-       
+        else return
     }
-    
+    else if (e.elementType === ElementType.text) {
+      const x = (e.elementPosition.x)*scale
+      const y = (e.elementPosition.y)*scale
+      const width = (e.elementSize.width)*scale
+      const height = (e.elementSize.height)*scale
+        return <foreignObject key={e.id} x={""+x} y={""+y} width={""+width} height={""+height}> 
+        <input  id="text_id_pr1" value={(e as Text).textString} onChange={(e) => props.addText(e.target.value)}/> 
+        </foreignObject>
+    }
+    else if (e.elementType === ElementType.image) {
+      const x = (e.elementPosition.x)*scale
+      const y = (e.elementPosition.y)*scale
+      const width = (e.elementSize.width)*scale
+      const height = (e.elementSize.height)*scale
+      return (
+          <image key={e.id} x={""+x} y={""+y} width={""+width} height={""+height} href={(e as ImageElement).imageUrl}/>
+      )
+    }
+    else return
 }
 
 function Elementik(props: any) {
     let elements = props.state.model.currentSlide.elements.map((e: Element) => {
-        return (Elem(e, 1))
+        return (Elem(e, 1, props))
     })
-    return (
-        <>{elements}</>    
+    return (<>
+    {elements}
+    </>    
     )
 }
-export default connect(stateOne)(Elementik)
+export default connect(stateOne, dispatchOne)(Elementik)
 
 export {Elem}

@@ -1,26 +1,30 @@
-.App {
+.App 
+{
   display: flex;
   height: 100vh;
   background-color: #1d1c18;
 }
 
-::-webkit-scrollbar {
+::-webkit-scrollbar 
+{
   background-color: #22211c;
   width: 15px;
 }
   
-::-webkit-scrollbar-thumb {
+::-webkit-scrollbar-thumb 
+{
   background-color: #585337;
   border-radius: 9em;
 }
   
-::-webkit-scrollbar-thumb:hover {
+::-webkit-scrollbar-thumb:hover 
+{
   background-color: #7e764a;
   border-radius: 9em;
 }
   
-
-.Main {
+.Main 
+{
   text-align: center;
   display: flex;
   background-color: #1d1c18;
@@ -29,76 +33,9 @@
   width: 80%;
 }
 
-.Main2 {
+.ButtonsPanel 
+{
   flex-direction: row;
-}
-
-.Icon {
-width: 30px;
-}
-
-.Menu {
-width: 20%;
-}
- 
-.SlidesList {
-width: 100%;
-height: 20vh;
-background-color: #cfbb03;
-}
-
-.Slide {
-width: 200px;
-height: 130px;
-display: flex;
-margin-top: 20px;
-margin-left: 50px;
-}
-
-.WorkArea
-{
-  width: 100%;
-  height: 85vh;
-  background-color: #000000;
-}
-
-.CurrentSlide
-{
-  width: 70%;
-  height: 70vh;
-  margin-top: 50px;
-  background-color: #fcfcfc;
-}
-
-.NamePresentation
-{
-  width: 300px;
-  height: 40px;
-  margin-left: 20px;
-  margin-top: 20px;
-  outline: none;
-  border: none;
-  background: none;
-  color:#fafaf9;
-  font-size: 30px;
-  font-family: Tahoma;
-  box-sizing: border-box;
-  text-align: center;
-  border-radius: 5px;
-}
-
-.NamePresentation:hover
-{
-  border: 1px solid #e5e5e5;
-  cursor: pointer;
-}
-
-.NamePresentation:focus
-{
-  box-shadow: 0 0 0 1px #1d1c18, 0 0 0 2px #e5e5e5;
-  background: #fff;
-  color: #1d1c18;
-  cursor: auto;
 }
 
 .IconButton
@@ -112,8 +49,14 @@ margin-left: 50px;
 
 .Icon
 {
+  width: 40px;
   background: url(./icons/icons8-создать-новый-48.png);
   background-size: 40px 40px;
+}
+
+.hidden 
+{
+  display: none;
 }
 
 .IconButton:focus
@@ -157,20 +100,66 @@ margin-left: 50px;
   background-size: 40px 40px;
 }
 
+.Text
+{
+  background: url(./icons/icons8-текст-50.png);
+  background-size: 40px 40px;
+}
+
 .Picture
 {
   background: url(./icons/icons8-очень-большие-иконки-50.png);
   background-size: 40px 40px;
 }
 
-.Slide
+.Menu 
 {
-  width: 240px;
-  height: 140px;
-  display: flex;
-  margin-top: 10px;
-  margin-bottom: 20px;
+  width: 20%;
+}
+
+.NamePresentation
+{
+  width: 300px;
+  height: 40px;
   margin-left: 20px;
+  margin-top: 20px;
+  outline: none;
+  border: none;
+  background: none;
+  color:#fafaf9;
+  font-size: 30px;
+  font-family: Tahoma;
+  box-sizing: border-box;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.NamePresentation:hover
+{
+  border: 1px solid #e5e5e5;
+  cursor: pointer;
+}
+
+.NamePresentation:focus
+{
+  box-shadow: 0 0 0 1px #1d1c18, 0 0 0 2px #e5e5e5;
+  background: #fff;
+  color: #1d1c18;
+  cursor: auto;
+}
+
+.WorkArea
+{
+  margin-top: 50px;
+  background-color: #000;
+}
+
+.CurrentSlide
+{
+  width: 70%;
+  height: 70vh;
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
 
 .Element
@@ -183,26 +172,39 @@ margin-left: 50px;
 {
   display: flex;
   flex-direction: column;
-  width: 300px;
+  width: 340px;
   margin-top: 20px;
   margin-left: 30px;
   margin-right: 30px;
-  height: 870px;
   border: 4px;
-  border-color: #cfbb03;
+  border-color: #ffffff;
   overflow-y: scroll;
   overflow-x: none;
   background: #1d1c18;
   cursor: pointer;
 }
   
-.slider
+.SlideWrapper
 {
-  width: 200px;
-  max-height: 20px;
-  border: 4px '#fff';
+  display: flex;
+  align-items: center;
 }
-  
+
+.SlideNumber 
+{
+  color: #fff;
+}
+
+.Slide
+{
+  width: 240px;
+  height: 140px;
+  display: flex;
+  margin-bottom: 20px;
+  margin-left: 15px;
+  background-size: cover
+}
+
 li
 {
   list-style-type: none;

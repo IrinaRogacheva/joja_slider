@@ -3,20 +3,20 @@ import { v4 as uuidv4 } from 'uuid'
 import * as CONSTANTS from '../entries/constants'
 import { Dispatch } from 'react'
 import { OPEN_PRESENTATION } from '../store/actions'
-export const NEW_SLIDE_ID = uuidv4() 
 
-function createPresentation(): Presentation { 
+function createPresentation(presentation: Presentation): Presentation { 
     const newSlideId: string = uuidv4()
-    return { 
+    return {
+        ...presentation,
         model: { 
             name: CONSTANTS.DEFAULT_PRESENTATION_NAME, 
             slidesList: [{ 
-                background: CONSTANTS.WHITE, 
+                background: CONSTANTS.WHITE_BACK_COLOR, 
                 elements: [], 
-                id: newSlideId 
+                id: newSlideId  
             }], 
             currentSlide: { 
-                background: CONSTANTS.WHITE, 
+                background: CONSTANTS.WHITE_BACK_COLOR, 
                 elements: [], 
                 id: newSlideId 
             }, 
@@ -38,7 +38,6 @@ function changePresentationName(presentation: Presentation, newName: string): Pr
         } 
     }
 }
-
 
 function openPresentation(newPr: Presentation): Presentation {
     return newPr

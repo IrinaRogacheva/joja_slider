@@ -1,15 +1,18 @@
-import {Presentation, Slide} from '../entries/entries'
+import {BackgroundType, Presentation, Slide, ImageElement} from '../entries/entries'
 import {changeSlideInSlidesList} from '../functions/elements'
 import { v4 as uuidv4 } from 'uuid'
-export const NEW_SLIDE_ID = uuidv4()
+import { Dispatch } from 'react' 
+import { CHANGE_BACKGROUND_SLIDE } from '../store/actions'
+import {BACKGROUND} from '../entries/constants'
 
 function addSlide(presentation: Presentation): Presentation {
     const currentSlide: Slide = {...presentation.model.currentSlide}
     const currentSlideId: string = currentSlide.id
+    const newSlideId: string = uuidv4()
     const newSlide: Slide = {
         background: {...presentation.model.currentSlide}.background,
         elements: [],
-        id: uuidv4()
+        id: newSlideId
     }
     const copySlides: Array<Slide> = presentation.model.slidesList.slice()
     for (let i = 0; i < copySlides.length; i++) {
@@ -23,7 +26,8 @@ function addSlide(presentation: Presentation): Presentation {
     return {...presentation,
         model: {...presentation.model,
             slidesList: copySlides,
-            currentSlide: newSlide
+            currentSlide: newSlide,
+            selectedSlidesId: [newSlideId]
         }
     } as Presentation  
 }
@@ -93,7 +97,7 @@ function deleteSlide(presentation: Presentation): Presentation {
     } as Presentation 
 }
 
-function changeBackgroundColor(presentation: Presentation, backgroundColor: string): Presentation {
+function changeBackgroundColor(presentation: Presentation, backgroundColor: BackgroundType): Presentation {
     const currentSlide: Slide = {
         ...presentation.model.currentSlide,
         background: backgroundColor
@@ -105,6 +109,18 @@ function changeBackgroundColor(presentation: Presentation, backgroundColor: stri
         }
     } as Presentation 
 }
+
+function backgroundPicture(evt: React.ChangeEvent<HTMLInputElement>, dispatch: Dispatch<any>, ) { 
+    let img = new FileReader()
+    if (evt.target.files != null) {
+     img.onloadend = function() {   
+     if (typeof(img.result) === 'string') {  
+        (BACKGROUND as ImageElement).imageUrl = img.result as string
+        dispatch({type: CHANGE_BACKGROUND_SLIDE, payload: BACKGROUND})
+    }}
+    img.readAsDataURL(evt.target.files[0])
+   } 
+ }
 
 function changeCurrentSlide(presentation: Presentation, slideId: string): Presentation {
     const copySlides: Array<Slide> = presentation.model.slidesList.slice()
@@ -141,6 +157,7 @@ export {
     deleteSlide,
     addSlide,
     changeBackgroundColor,
+    backgroundPicture,
     changeCurrentSlide,
     selectSlides
 }

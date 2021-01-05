@@ -1,14 +1,7 @@
 import React, { Dispatch } from 'react'
 import {connect} from 'react-redux'
-import {Presentation} from '../entries/entries'
-import { saveLocalPresentation, createPresentation, openLocalPresentation} from '../functions/presentation'
-import { CREATE_PRESENTATION } from '../store/actions'
-
-const stateOne = (state: Presentation) => {
-  return {
-      state: state
-  }
-}
+import { saveLocalPresentation, openLocalPresentation} from '../../functions/presentation'
+import { CREATE_PRESENTATION } from '../../store/actions'
 
 const dispatchOne = (dispatch: Dispatch<any>) => {
     return {
@@ -22,9 +15,9 @@ function Save(props: any) {
         <div className='fileButtons'>
             <button className='IconButton' onClick={()=>{saveLocalPresentation(props.state)}}>Save</button> 
             <div><input type='file' onChange={(e)=>{props.openLocalPresentation(e)}}></input></div>
-            <button className='IconButton' onClick={()=>{createPresentation()}}>New</button>
+            <button className='IconButton' onClick={()=>{props.createPresentation()}}>New</button>
         </div>
     ) 
 }
 
-export default connect(stateOne, dispatchOne)(Save)
+export default connect(null, dispatchOne)(Save)
