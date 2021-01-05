@@ -16,7 +16,7 @@ function App(props: any) {
         <div className="Main">
           <div className='ButtonsPanel'>
             <PresentationName/>
-            {/*<OpenSaveLocal/>*/}
+            <OpenSaveLocal/>
             <button className='IconButton Left'></button>
             <button className='IconButton Right'></button>
             <AddPrimitive/>           
