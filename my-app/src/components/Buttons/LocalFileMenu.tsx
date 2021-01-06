@@ -1,8 +1,12 @@
 import React, { Dispatch, useState } from 'react'
 import {connect} from 'react-redux'
+import {Presentation} from '../../entries/entries'
 import { saveLocalPresentation, openLocalPresentation} from '../../functions/presentation'
 import { CREATE_PRESENTATION } from '../../store/actions'
 
+const stateOne = (state: Presentation) => {
+    return {state: state}
+}
 
 const dispatchOne = (dispatch: Dispatch<any>) => {
     return {
@@ -38,4 +42,4 @@ function LocalFileMenu(props: any) {
     ) 
 }
 
-export default connect(null, dispatchOne)(LocalFileMenu)
+export default connect(stateOne, dispatchOne)(LocalFileMenu)

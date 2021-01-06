@@ -1,34 +1,10 @@
 import {Presentation} from '../entries/entries'
-import { v4 as uuidv4 } from 'uuid'
 import * as CONSTANTS from '../entries/constants'
 import { Dispatch } from 'react'
 import { OPEN_PRESENTATION } from '../store/actions'
 
 function createPresentation(presentation: Presentation): Presentation { 
-    const newSlideId: string = uuidv4()
-    return {
-        ...presentation,
-        model: { 
-            name: CONSTANTS.DEFAULT_PRESENTATION_NAME, 
-            slidesList: [{ 
-                background: CONSTANTS.WHITE_BACK_COLOR, 
-                elements: [], 
-                id: newSlideId  
-            }], 
-            currentSlide: { 
-                background: CONSTANTS.WHITE_BACK_COLOR, 
-                elements: [], 
-                id: newSlideId 
-            }, 
-            selectedSlidesId: [], 
-            selectedElementsId: [] 
-        }, 
-        view: { 
-            color: CONSTANTS.WHITE, 
-            textSize: CONSTANTS.DEFAULT_TEXT_SIZE, 
-            textFont: CONSTANTS.DEFAULT_TEXT_FONT 
-        } 
-    } as Presentation
+    return CONSTANTS.NEW_PRESENTATION
 } 
 
 function changePresentationName(presentation: Presentation, newName: string): Presentation { 
