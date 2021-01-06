@@ -25,10 +25,10 @@ function LocalFileMenu(props: any) {
     <div className="FileMenuWrapper">
     <ul className="FileMenu" style={{display: displayStyle}}>
             <li className='FileMenuItem' onClick={()=>{props.createPresentation()}}>Создать</li>
-            <li className='FileMenuItem'>
+            <li>
             <input type="file" id="OpenFile" className="FileInput" onChange={(e)=>{props.openLocalPresentation(e)}}></input>
                 <label htmlFor="OpenFile" >
-                    <p className="">Открыть</p>
+                    <p className='FileMenuItem'>Открыть</p>
                 </label>
             </li>
             <li className='FileMenuItem' onClick={()=>{saveLocalPresentation(props.state)}}>Сохранить</li>
