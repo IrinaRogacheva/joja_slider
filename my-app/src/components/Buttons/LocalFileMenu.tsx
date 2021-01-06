@@ -23,19 +23,24 @@ function LocalFileMenu(props: any) {
     } else {
         displayStyle = 'none'
     }
+
+    function onItemClick(someFunction: any) {
+        setIsVisible(false)
+    }
+
     return (
         <div className='wrapper'>
     <button className="FileMenuButton" onClick={()=>{setIsVisible(!isVisible)}}>Файл</button>
     <div className="FileMenuWrapper">
     <ul className="FileMenu" style={{display: displayStyle}}>
-            <li className='FileMenuItem' onClick={()=>{props.createPresentation()}}>Создать</li>
+            <li className='FileMenuItem' onClick={()=>{onItemClick(props.createPresentation())}}>Создать</li>
             <li>
-            <input type="file" id="OpenFile" className="FileInput" onChange={(e)=>{props.openLocalPresentation(e)}}></input>
+            <input type="file" id="OpenFile" className="FileInput" onChange={(e)=>{onItemClick(props.openLocalPresentation(e))}}></input>
                 <label htmlFor="OpenFile" >
                     <p className='FileMenuItem'>Открыть</p>
                 </label>
             </li>
-            <li className='FileMenuItem' onClick={()=>{saveLocalPresentation(props.state)}}>Сохранить</li>
+            <li className='FileMenuItem' onClick={()=>{onItemClick(saveLocalPresentation(props.state))}}>Сохранить</li>
         </ul>
     </div>
     </div>
