@@ -1,11 +1,6 @@
-import React, { Dispatch } from 'react';
-import {Presentation} from '../../entries/entries'
+import React, { Dispatch } from 'react'
 import {ADD_SLIDE} from '../../store/actions'
 import {connect} from 'react-redux'
-
-const stateOne = (state: Presentation) => {
-    return {state: state}
-}
 
 const dispatchOne = (dispatch: Dispatch<any>) => {
     return {
@@ -19,4 +14,4 @@ function AddSlide(props: any) {
     )
 }
 
-export default connect(stateOne, dispatchOne)(AddSlide)
+export default connect(null, dispatchOne)(AddSlide)

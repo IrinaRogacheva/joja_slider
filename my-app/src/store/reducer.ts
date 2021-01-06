@@ -3,8 +3,8 @@ import * as actionTypes from './actions'
 import {ActionType} from './actionType'
 import {createPresentation, changePresentationName, openPresentation} from '../functions/presentation'
 import {Reducer} from 'redux'
-import {addSlide, selectSlides, deleteSlide, changeBackgroundColor, changeCurrentSlide} from '../functions/slides'
-import {addElement} from '../functions/elements'
+import {addSlide, selectSlides, deleteSlide, changeBackgroundColor, changeCurrentSlide, showPrevSlide, showNextSlide} from '../functions/slides'
+import {addElement, selectElements} from '../functions/elements'
 import {PRIMITIVE_CIRCLE, PRIMITIVE_TRIANGLE, PRIMITIVE_RECTANGLE, IMAGE, TEXT} from '../entries/constants'
 import {addText} from '../functions/textElements'
 
@@ -41,7 +41,12 @@ const reducer: Reducer<any, ActionType> = (
             return addElement(state, TEXT) 
         case actionTypes.CHANGE_TEXT:
             return addText(state, action.payload)        
-            
+        case actionTypes.SELECT_ELEMENTS:
+            return selectElements(state, action.payload)   
+        case actionTypes.SHOW_PREV_SLIDE:
+            return showPrevSlide(state)     
+        case actionTypes.SHOW_NEXT_SLIDE:
+            return showNextSlide(state)    
     }
 
     return state

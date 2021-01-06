@@ -22,7 +22,7 @@
   background-color: #7e764a;
   border-radius: 9em;
 }
-  
+
 .Main 
 {
   text-align: center;
@@ -36,27 +36,17 @@
 .ButtonsPanel 
 {
   flex-direction: row;
+  display: flex;
+  align-items: flex-end;
 }
 
 .IconButton
 {
   margin-top: 20px;
-  margin-left: 40px;
+  margin-left: 30px;
   width: 40px;
   height: 40px;
   border: none;
-}
-
-.Icon
-{
-  width: 40px;
-  background: url(./icons/icons8-создать-новый-48.png);
-  background-size: 40px 40px;
-}
-
-.hidden 
-{
-  display: none;
 }
 
 .IconButton:focus
@@ -68,6 +58,13 @@
 {
   cursor: pointer;
   filter: brightness(3);
+}
+
+.Icon
+{
+  width: 40px;
+  background: url(./icons/icons8-создать-новый-48.png);
+  background-size: 40px 40px;
 }
 
 .Left
@@ -102,7 +99,7 @@
 
 .Text
 {
-  background: url(./icons/icons8-текст-50.png);
+  background: url(./icons/icons8-добавить-текст-50.png);
   background-size: 40px 40px;
 }
 
@@ -110,6 +107,81 @@
 {
   background: url(./icons/icons8-очень-большие-иконки-50.png);
   background-size: 40px 40px;
+}
+
+.BackgroundImage 
+{
+  background: url(./icons/icons8-редактирование-изображения-50.png);
+  background-size: 40px 40px;
+}
+
+.DeleteSlide 
+{
+  background: url(./icons/icons8-удалить-навсегда-50.png);
+  background-size: 40px 40px;
+}
+
+.wrapper
+{
+  position: relative;
+  width: 100px;
+}
+
+.FileMenuWrapper 
+{
+  height: 0;
+}
+
+.FileMenuButton 
+{
+  position: relative;
+  width: 100px;
+  margin: 0 auto;
+  padding: 12px 15px;
+  background: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.3s ease-out;
+  border: none;
+}
+
+.FileMenu 
+{
+  width: 100px;
+  box-sizing: border-box;
+  background: #fff;
+  padding: 0;
+  margin: 0;
+  border-radius: 5px;
+  border: 1px solid rgba(0,0,0,0.2);
+}
+
+.FileMenuItem
+{
+  padding: 6px 10px;
+  cursor: pointer;
+}
+
+ .FileMenuButton:after 
+ {
+  content: "";
+  width: 0;
+  height: 0;
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  margin-top: -3px;
+  border-width: 6px 6px 0 6px;
+  border-style: solid;
+  border-color: #cfbb03 transparent;
+ }
+ 
+.FileInput 
+{
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
 }
 
 .Menu 
@@ -136,15 +208,11 @@
 
 .NamePresentation:hover
 {
-  border: 1px solid #e5e5e5;
   cursor: pointer;
 }
 
 .NamePresentation:focus
 {
-  box-shadow: 0 0 0 1px #1d1c18, 0 0 0 2px #e5e5e5;
-  background: #fff;
-  color: #1d1c18;
   cursor: auto;
 }
 
@@ -208,4 +276,9 @@
 li
 {
   list-style-type: none;
+}
+
+p
+{
+  margin: 0;
 }

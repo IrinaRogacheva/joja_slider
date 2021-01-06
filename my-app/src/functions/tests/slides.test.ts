@@ -1,4 +1,4 @@
-import {addSlide, moveSlide, deleteSlide, changeBackgroundColor, changeCurrentSlide, NEW_SLIDE_ID} from '../slides'
+import {addSlide, moveSlide, deleteSlide, changeBackgroundColor, changeCurrentSlide} from '../slides'
 import {Presentation} from '../../entries/entries'
 import * as CONSTANTS from '../../entries/constants'
 
@@ -7,17 +7,17 @@ test('addSlide function', () => {
         model: {
             name: CONSTANTS.DEFAULT_PRESENTATION_NAME,
             slidesList: [{
-                background: CONSTANTS.WHITE,
+                background: CONSTANTS.WHITE_BACK_COLOR,
                 elements: [],
                 id: '0'
             },
             {
-                background: CONSTANTS.WHITE,
+                background: CONSTANTS.WHITE_BACK_COLOR,
                 elements: [],
                 id: '1'
             }],
             currentSlide: {
-                background: CONSTANTS.WHITE,
+                background: CONSTANTS.WHITE_BACK_COLOR,
                 elements: [],
                 id: '0'
             },
@@ -36,27 +36,27 @@ test('addSlide function', () => {
             name: CONSTANTS.DEFAULT_PRESENTATION_NAME,
             slidesList: [
                 {
-                    background: CONSTANTS.WHITE,
+                    background: CONSTANTS.WHITE_BACK_COLOR,
                     elements: [],
                     id: '0'
                 },
                 {
-                    background: CONSTANTS.WHITE,
+                    background: CONSTANTS.WHITE_BACK_COLOR,
                     elements: [],
                     id: '1'
                 },
                 {
-                    background: CONSTANTS.WHITE,
+                    background: CONSTANTS.WHITE_BACK_COLOR,
                     elements: [],
-                    id: NEW_SLIDE_ID
+                    id: '2'
                 }
             ],
             currentSlide: {
-                background: CONSTANTS.WHITE,
+                background: CONSTANTS.WHITE_BACK_COLOR,
                 elements: [],
-                id: NEW_SLIDE_ID
+                id: '2'
             },
-            selectedSlidesId: [NEW_SLIDE_ID],
+            selectedSlidesId: ['2'],
             selectedElementsId: []
         },
         view: {
@@ -76,33 +76,33 @@ test('moveSlide function', () => {
             name: CONSTANTS.DEFAULT_PRESENTATION_NAME,
             slidesList: [
                 {
-                    background: CONSTANTS.WHITE,
+                    background: CONSTANTS.WHITE_BACK_COLOR,
                     elements: [],
                     id: '0'
                 }, 
                 {
-                    background: CONSTANTS.WHITE,
+                    background: CONSTANTS.WHITE_BACK_COLOR,
                     elements: [],
                     id: '1'
                 },
                 {
-                    background: CONSTANTS.WHITE,
+                    background: CONSTANTS.WHITE_BACK_COLOR,
                     elements: [],
                     id: '2'
                 },
                 {
-                    background: CONSTANTS.WHITE,
+                    background: CONSTANTS.WHITE_BACK_COLOR,
                     elements: [],
                     id: '3'
                 },
                 {
-                    background: CONSTANTS.WHITE,
+                    background: CONSTANTS.WHITE_BACK_COLOR,
                     elements: [],
                     id: '4'
                 }
             ],
             currentSlide: {
-                background: CONSTANTS.WHITE,
+                background: CONSTANTS.WHITE_BACK_COLOR,
                 elements: [],
                 id: '0'
             },
@@ -120,33 +120,33 @@ test('moveSlide function', () => {
             name: CONSTANTS.DEFAULT_PRESENTATION_NAME,
             slidesList: [
                 {
-                    background: CONSTANTS.WHITE,
+                    background: CONSTANTS.WHITE_BACK_COLOR,
                     elements: [],
                     id: '1'
                 },
                 {
-                    background: CONSTANTS.WHITE,
+                    background: CONSTANTS.WHITE_BACK_COLOR,
                     elements: [],
                     id: '0'
                 },
                 {
-                    background: CONSTANTS.WHITE,
+                    background: CONSTANTS.WHITE_BACK_COLOR,
                     elements: [],
                     id: '3'
                 },
                 {
-                    background: CONSTANTS.WHITE,
+                    background: CONSTANTS.WHITE_BACK_COLOR,
                     elements: [],
                     id: '2'
                 },
                 {
-                    background: CONSTANTS.WHITE,
+                    background: CONSTANTS.WHITE_BACK_COLOR,
                     elements: [],
                     id: '4'
                 }
             ],
             currentSlide: {
-                background: CONSTANTS.WHITE,
+                background: CONSTANTS.WHITE_BACK_COLOR,
                 elements: [],
                 id: '0'
             },
@@ -168,37 +168,17 @@ test('deleteSlide function', () => {
             name: CONSTANTS.DEFAULT_PRESENTATION_NAME,
             slidesList: [
                 {
-                    background: CONSTANTS.WHITE,
+                    background: CONSTANTS.WHITE_BACK_COLOR,
                     elements: [],
                     id: '0'
-                }, 
-                {
-                    background: CONSTANTS.WHITE,
-                    elements: [],
-                    id: '1'
-                },
-                {
-                    background: CONSTANTS.WHITE,
-                    elements: [],
-                    id: '2'
-                },
-                {
-                    background: CONSTANTS.WHITE,
-                    elements: [],
-                    id: '3'
-                },
-                {
-                    background: CONSTANTS.WHITE,
-                    elements: [],
-                    id: '4'
                 }
             ],
             currentSlide: {
-                background: CONSTANTS.WHITE,
+                background: CONSTANTS.WHITE_BACK_COLOR,
                 elements: [],
                 id: '0'
             },
-            selectedSlidesId: ['0', '3'],
+            selectedSlidesId: ['0'],
             selectedElementsId: []
         },
         view: {
@@ -212,27 +192,17 @@ test('deleteSlide function', () => {
             name: CONSTANTS.DEFAULT_PRESENTATION_NAME,
             slidesList: [
                 {
-                    background: CONSTANTS.WHITE,
+                    background: CONSTANTS.WHITE_BACK_COLOR,
                     elements: [],
                     id: '1'
-                },
-                {
-                    background: CONSTANTS.WHITE,
-                    elements: [],
-                    id: '2'
-                },
-                {
-                    background: CONSTANTS.WHITE,
-                    elements: [],
-                    id: '4'
                 }
             ],
             currentSlide: {
-                background: CONSTANTS.WHITE,
+                background: CONSTANTS.WHITE_BACK_COLOR,
                 elements: [],
                 id: '1'
             },
-            selectedSlidesId: [],
+            selectedSlidesId: ['1'],
             selectedElementsId: []
         },
         view: {
@@ -245,17 +215,17 @@ test('deleteSlide function', () => {
 })
 
 test('changeBackgroundColor function', () => {
-    const backgroundColor = CONSTANTS.BLACK
+    const backgroundColor = CONSTANTS.BLACK_BACK_COLOR
     const presentationBefore: Presentation = {
         model: {
             name: CONSTANTS.DEFAULT_PRESENTATION_NAME,
             slidesList: [{
-                background: CONSTANTS.WHITE,
+                background: CONSTANTS.WHITE_BACK_COLOR,
                 elements: [],
                 id: '0'
             }],
             currentSlide: {
-                background: CONSTANTS.WHITE,
+                background: CONSTANTS.WHITE_BACK_COLOR,
                 elements: [],
                 id: '0'
             },
@@ -272,12 +242,12 @@ test('changeBackgroundColor function', () => {
         model: {
             name: CONSTANTS.DEFAULT_PRESENTATION_NAME,
             slidesList: [{
-                background: CONSTANTS.BLACK,
+                background: CONSTANTS.BLACK_BACK_COLOR,
                 elements: [],
                 id: '0'
             }],
             currentSlide: {
-                background: CONSTANTS.BLACK,
+                background: CONSTANTS.BLACK_BACK_COLOR,
                 elements: [],
                 id: '0'
             },
@@ -300,18 +270,18 @@ test('changeCurrentSlidefunction', () => {
             name: CONSTANTS.DEFAULT_PRESENTATION_NAME,
             slidesList: [
                 {
-                    background: CONSTANTS.WHITE,
+                    background: CONSTANTS.WHITE_BACK_COLOR,
                     elements: [],
                     id: '0'
                 },
                 {
-                    background: CONSTANTS.WHITE,
+                    background: CONSTANTS.WHITE_BACK_COLOR,
                     elements: [],
                     id: '1'
                 }
             ],
             currentSlide: {
-                background: CONSTANTS.WHITE,
+                background: CONSTANTS.WHITE_BACK_COLOR,
                 elements: [],
                 id: '0'
             },
@@ -329,18 +299,18 @@ test('changeCurrentSlidefunction', () => {
             name: CONSTANTS.DEFAULT_PRESENTATION_NAME,
             slidesList: [
                 {
-                    background: CONSTANTS.WHITE,
+                    background: CONSTANTS.WHITE_BACK_COLOR,
                     elements: [],
                     id: '0'
                 },
                 {
-                    background: CONSTANTS.WHITE,
+                    background: CONSTANTS.WHITE_BACK_COLOR,
                     elements: [],
                     id: '1'
                 }
             ],
             currentSlide: {
-                background: CONSTANTS.WHITE,
+                background: CONSTANTS.WHITE_BACK_COLOR,
                 elements: [],
                 id: '1'
             },

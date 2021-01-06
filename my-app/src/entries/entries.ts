@@ -45,7 +45,7 @@ type ImageElement = Element & BackgroundType & {
     type: BackgroundType.image
 } 
 
-type PrimitiveType = 'circle'|'rectangle'|'triangle'|'polygon'|'line'
+type PrimitiveType = 'circle'|'rectangle'|'triangle'
 
 type Primitive = Element & {
     elementType: ElementType.primitive,

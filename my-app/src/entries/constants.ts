@@ -93,7 +93,7 @@ export const NEW_PRESENTATION: Presentation = {
             elements: [], 
             id: NEW_SLIDE_ID 
         }, 
-        selectedSlidesId: [], 
+        selectedSlidesId: [NEW_SLIDE_ID], 
         selectedElementsId: [] 
     }, 
     view: { 

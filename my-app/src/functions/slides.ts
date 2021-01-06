@@ -3,7 +3,7 @@ import {changeSlideInSlidesList} from '../functions/elements'
 import { v4 as uuidv4 } from 'uuid'
 import { Dispatch } from 'react' 
 import { CHANGE_BACKGROUND_SLIDE } from '../store/actions'
-import {BACKGROUND} from '../entries/constants'
+import {BACKGROUND, WHITE_BACK_COLOR} from '../entries/constants'
 
 function addSlide(presentation: Presentation): Presentation {
     const currentSlide: Slide = {...presentation.model.currentSlide}
@@ -27,7 +27,8 @@ function addSlide(presentation: Presentation): Presentation {
         model: {...presentation.model,
             slidesList: copySlides,
             currentSlide: newSlide,
-            selectedSlidesId: [newSlideId]
+            selectedSlidesId: [newSlideId],
+            selectedElementsId: []
         }
     } as Presentation  
 }
@@ -83,15 +84,23 @@ function deleteSlide(presentation: Presentation): Presentation {
     if (currentSlideIndex < copySlides.length) {
         currentSlide = {...copySlides[currentSlideIndex]}
     }
-    else {
+    else if (currentSlideIndex < copySlides.length){
         currentSlide = {...copySlides[copySlides.length-1]}
+    } else {
+        const newSlideId = uuidv4()
+        currentSlide = {
+                background: WHITE_BACK_COLOR,
+                elements: [],
+                id: newSlideId
+            }
+        copySlides.splice(0, 1, currentSlide)    
     }
 
     console.log(currentSlide.id)
     return {...presentation,
         model: {...presentation.model,
             currentSlide: currentSlide,
-            selectedSlidesId: [],
+            selectedSlidesId: [currentSlide.id],
             slidesList: copySlides
         }
     } as Presentation 
@@ -110,7 +119,7 @@ function changeBackgroundColor(presentation: Presentation, backgroundColor: Back
     } as Presentation 
 }
 
-function backgroundPicture(evt: React.ChangeEvent<HTMLInputElement>, dispatch: Dispatch<any>, ) { 
+function backgroundPicture(evt: React.ChangeEvent<HTMLInputElement>, dispatch: Dispatch<any>) { 
     let img = new FileReader()
     if (evt.target.files != null) {
      img.onloadend = function() {   
@@ -134,7 +143,54 @@ function changeCurrentSlide(presentation: Presentation, slideId: string): Presen
     return {...presentation,
         model: {...presentation.model,
             currentSlide: newCurrentSlide,
-            selectedSlidesId: [newCurrentSlide.id]
+            selectedSlidesId: [newCurrentSlide.id],
+            selectedElementsId: []
+        }
+    } as Presentation
+}
+
+function showPrevSlide(presentation: Presentation): Presentation {
+    const curSlideId: string = presentation.model.currentSlide.id
+    const copySlides: Array<Slide> = presentation.model.slidesList.slice()
+    let newCurrentSlide: Slide = {...presentation.model.currentSlide}
+    for (let i = 0; i < copySlides.length; i++) {
+        if (copySlides[i].id === curSlideId) {
+            if (i !== 0) {
+                newCurrentSlide = copySlides[i-1]
+            } else {
+                newCurrentSlide = copySlides[i]
+            }
+            break
+        }
+    }
+    return {...presentation,
+        model: {...presentation.model,
+            currentSlide: newCurrentSlide,
+            selectedSlidesId: [newCurrentSlide.id],
+            selectedElementsId: []
+        }
+    } as Presentation
+}
+
+function showNextSlide(presentation: Presentation): Presentation {
+    const curSlideId: string = presentation.model.currentSlide.id
+    const copySlides: Array<Slide> = presentation.model.slidesList.slice()
+    let newCurrentSlide: Slide = {...presentation.model.currentSlide}
+    for (let i = 0; i < copySlides.length; i++) {
+        if (copySlides[i].id === curSlideId) {
+            if (i !== copySlides.length-1) {
+                newCurrentSlide = copySlides[i+1]
+            } else {
+                newCurrentSlide = copySlides[i]
+            }
+            break
+        }
+    }
+    return {...presentation,
+        model: {...presentation.model,
+            currentSlide: newCurrentSlide,
+            selectedSlidesId: [newCurrentSlide.id],
+            selectedElementsId: []
         }
     } as Presentation
 }
@@ -159,5 +215,7 @@ export {
     changeBackgroundColor,
     backgroundPicture,
     changeCurrentSlide,
+    showPrevSlide,
+    showNextSlide,
     selectSlides
 }

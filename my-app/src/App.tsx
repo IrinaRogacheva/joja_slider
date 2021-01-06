@@ -5,10 +5,13 @@ import PresentationName from './components/PresentationName'
 import WorkArea from './components/WorkArea'
 import Slides from './components/Slides'
 import AddSlide from './components/Buttons/AddSlide'
+import DeleteSlides from './components/Buttons/DeleteSlides'
 import AddPrimitive from './components/Buttons/AddPrimitive'
-import AddPicture from './components/Buttons/LoadPicture'
+import AddPicture from './components/Buttons/AddPicture'
+import BackgroundImage from './components/Buttons/BackgroundImage'
 import AddText from './components/Buttons/AddText'
-import OpenSaveLocal from './components/Buttons/OpenSaveLocal'
+import LocalFileMenu from './components/Buttons/LocalFileMenu'
+import SwitchSlide from './components/Buttons/SwitchSlide';
 
 function App(props: any) {
   return (
@@ -16,17 +19,19 @@ function App(props: any) {
         <div className="Main">
           <div className='ButtonsPanel'>
             <PresentationName/>
-            <OpenSaveLocal/>
-            <button className='IconButton Left'></button>
-            <button className='IconButton Right'></button>
+            <LocalFileMenu/>
+            <SwitchSlide/>
             <AddPrimitive/>           
             <AddText/>
-            <button className='IconButton Picture' onClick={()=><AddPicture/>}></button>  
-            <input className='IconButton Picture' type='file' id='ii' style={{display: 'none'}}></input>
+            <AddPicture/>
           </div>
           <WorkArea/>
         </div>
-        <AddSlide/>
+        <div className='SlidesListButtons'>
+          <AddSlide/>
+          <BackgroundImage/>
+          <DeleteSlides/>
+        </div>
         <Slides/>
       </div>
     );

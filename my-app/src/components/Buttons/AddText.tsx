@@ -4,7 +4,7 @@ import {connect} from 'react-redux'
 
 const dispatchOne = (dispatch: Dispatch<any>) => {
     return {
-        addText: () => dispatch({type: ADD_TEXT}),
+        addText: () => dispatch({type: ADD_TEXT})
     }
 }
 

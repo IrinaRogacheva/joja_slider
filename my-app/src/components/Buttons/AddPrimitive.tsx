@@ -1,4 +1,4 @@
-import React, { Dispatch } from 'react';
+import React, { Dispatch } from 'react'
 import {ADD_PRIMITIVE_CIRCLE, ADD_PRIMITIVE_RECTANGLE, ADD_PRIMITIVE_TRIANGLE} from '../../store/actions'
 import {connect} from 'react-redux'
 
