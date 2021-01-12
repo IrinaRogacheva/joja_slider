@@ -1,4 +1,4 @@
-import {Presentation} from '../entries/entries'
+import {Presentation, Slide} from '../entries/entries'
 import {HISTORY} from '../entries/history'
 import {NEW_PRESENTATION} from '../constants/presentation'
 import { Dispatch } from 'react'
@@ -56,12 +56,24 @@ function saveLocalPresentation(presentation: Presentation): void {
 }
 
 function showStopPresentation(presentation: Presentation, b: boolean): Presentation {
+    let currentSlide: Slide = {...presentation.model.currentSlide}
+    let selectedSlideIdArray = presentation.model.selectedSlidesId.slice()
+    if (b === true) {
+        selectedSlideIdArray = [presentation.model.slidesList[0].id]
+        currentSlide = presentation.model.slidesList[0]
+    }
     return {
-        ...presentation, view: {
+        ...presentation,
+        model: {
+            ...presentation.model,
+            currentSlide: currentSlide,
+            selectedSlidesId: selectedSlideIdArray
+        },
+        view: {
             ...presentation.view, 
             b: b
         }
-    } 
+    } as Presentation
 }
 
 export {

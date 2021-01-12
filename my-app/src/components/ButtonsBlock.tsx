@@ -30,6 +30,7 @@ const mapDispatchToProps = (dispatch: Dispatch<any>) => {
         openLocalPresentation: (e: React.ChangeEvent<HTMLInputElement>) => openLocalPresentation(e, dispatch),
         undo: () => dispatch({type: Action.UNDO}),
         redo: () => dispatch({type: Action.REDO}),
+        changeTextSize: (newTextSize: string) => dispatch({type: Action.TEXT_SIZE, payload: newTextSize}),
         changeFont: (font: string) => dispatch({type: Action.CHANGE_FONT, payload: font}),
         changeTextAlign: (align: string) => dispatch({type: Action.CHANGE_TEXT_ALIGN, payload: align}),
         changeTextBold: () => dispatch({type: Action.TEXT_BOLD}),
