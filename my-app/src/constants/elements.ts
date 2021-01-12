@@ -1,22 +1,5 @@
-import {Presentation, Element, ElementType, Primitive, ImageElement, ColorString, BackgroundType, Text} from "../entries/entries"
-import { v4 as uuidv4 } from 'uuid'
-const NEW_SLIDE_ID = uuidv4()
-
-export const WHITE: string = 'fff'
-export const BLACK: string = '000'
-export const DEFAULT_PRESENTATION_NAME: string = 'Моя презентация'
-export const DEFAULT_TEXT_SIZE: number = 14
-export const DEFAULT_TEXT_FONT: string ='Arial'
-
-export const WHITE_BACK_COLOR = {
-    color: 'fff',
-    type: BackgroundType.string
-} as ColorString
-
-export const BLACK_BACK_COLOR = {
-    color: 'fff',
-    type: BackgroundType.string
-} as ColorString
+import {Element, ElementType, Primitive, ImageElement, Text} from "../entries/entries"
+import { WHITE, BLACK } from "./defaultView"
 
 export let IMAGE: Element = {
     id: '',
@@ -80,35 +63,6 @@ export const PRIMITIVE_TRIANGLE: Element = {
     primitiveFillColor: WHITE
 } as Primitive
 
-export const NEW_PRESENTATION: Presentation = {
-    model: { 
-        name: DEFAULT_PRESENTATION_NAME, 
-        slidesList: [{ 
-            background: WHITE_BACK_COLOR, 
-            elements: [], 
-            id: NEW_SLIDE_ID  
-        }], 
-        currentSlide: { 
-            background: WHITE_BACK_COLOR, 
-            elements: [], 
-            id: NEW_SLIDE_ID 
-        }, 
-        selectedSlidesId: [NEW_SLIDE_ID], 
-        selectedElementsId: [] 
-    }, 
-    view: { 
-        color: WHITE, 
-        textSize: DEFAULT_TEXT_SIZE, 
-        textFont: DEFAULT_TEXT_FONT 
-    } 
-} as Presentation         
-
-export const BACKGROUND: BackgroundType = {
-    elementType: ElementType.image,
-    imageUrl: '',  
-    type: BackgroundType.image 
-} as ImageElement
-
 export let TEXT: Element = {
     id: '',
     elementPosition: {
@@ -121,7 +75,11 @@ export let TEXT: Element = {
     },
     elementType: ElementType.text,
     textString: 'Введите текст',
-    textSize: 14,
-    textFont: 'Tahoma',
-    textColor: WHITE  
+    textSize: 0,
+    textFont: '',
+    textColor: '',
+    textAlign: '',
+    textBold: '',
+    textItalic: '',
+    textUnderline: '',
 } as Text

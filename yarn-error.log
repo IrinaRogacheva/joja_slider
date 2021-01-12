@@ -1,5 +1,5 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js add react-bootstrap
+  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js add react-color
 
 PATH: 
   C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\iCLS\;C:\Program Files\Intel\Intel(R) Management Engine Components\iCLS\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\FPC\2.6.4\bin\i386-Win32;C:\Program Files\Symfony;C:\ProgramData\ComposerSetup\bin;C:\Program Files (x86)\Yarn\bin\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Microsoft VS Code\bin;C:\Program Files\Git\cmd;C:\Program Files\nodejs\;C:\Users\Ирина\AppData\Local\Programs\Python\Python38\Scripts\;C:\Users\Ирина\AppData\Local\Programs\Python\Python38\;C:\Users\Ирина\AppData\Local\Microsoft\WindowsApps;C:\php;C:\Users\Ирина\AppData\Local\GitHubDesktop\bin;C:\Users\Ирина\AppData\Roaming\Composer\vendor\bin;C:\Program Files\JetBrains\PhpStorm 2019.3.4\bin;;C:\Users\Ирина\AppData\Local\Yarn\bin;C:\Users\Ирина\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\Ирина\AppData\Local\Microsoft\WindowsApps;C:\Users\Ирина\AppData\Roaming\npm
@@ -14,7 +14,7 @@ Platform:
   win32 x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/react-bootstrap: ESOCKETTIMEDOUT
+  Error: https://registry.yarnpkg.com/react-color: ESOCKETTIMEDOUT
       at ClientRequest.<anonymous> (C:\Program Files (x86)\Yarn\lib\cli.js:141375:19)
       at Object.onceWrapper (events.js:421:28)
       at ClientRequest.emit (events.js:315:20)

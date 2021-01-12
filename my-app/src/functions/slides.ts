@@ -3,7 +3,7 @@ import {changeSlideInSlidesList} from '../functions/elements'
 import { v4 as uuidv4 } from 'uuid'
 import { Dispatch } from 'react' 
 import { CHANGE_BACKGROUND_SLIDE } from '../store/actions'
-import {BACKGROUND, WHITE_BACK_COLOR} from '../entries/constants'
+import {BACKGROUND, WHITE_BACK_COLOR} from '../constants/defaultView'
 
 function addSlide(presentation: Presentation): Presentation {
     const currentSlide: Slide = {...presentation.model.currentSlide}

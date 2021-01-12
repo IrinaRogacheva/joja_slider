@@ -1,40 +1,56 @@
-import React from 'react';
-import './App.css';
+import './App.css'
+import {Dispatch, useEffect} from 'react'
 import {connect} from 'react-redux'
-import PresentationName from './components/PresentationName'
+import {UNDO, REDO} from './store/actions'
 import WorkArea from './components/WorkArea'
 import Slides from './components/Slides'
-import AddSlide from './components/Buttons/AddSlide'
-import DeleteSlides from './components/Buttons/DeleteSlides'
-import AddPrimitive from './components/Buttons/AddPrimitive'
-import AddPicture from './components/Buttons/AddPicture'
-import BackgroundImage from './components/Buttons/BackgroundImage'
-import AddText from './components/Buttons/AddText'
-import LocalFileMenu from './components/Buttons/LocalFileMenu'
-import SwitchSlide from './components/Buttons/SwitchSlide';
+import { changeHistory } from './functions/history'
+import { Presentation } from './entries/entries'
+import WorkAreaShow from './components/SlideShow'
+import ButtonsBlock from './components/ButtonsBlock'
+import SlidesListButtons from './components/SlidesListButtons'
+
+const mapStateToProps = (state: Presentation) => {
+  return {state: state}
+}
+
+const mapDispatchToProps = (dispatch: Dispatch<any>) => {
+  return {
+      undo: () => dispatch({type: UNDO}),
+      redo: () => dispatch({type: REDO})
+  }
+}
 
 function App(props: any) {
+  //useEffect(() => {
+    //changeHistory(props.state)
+//}, [props.state])
+changeHistory(props.state)
+  document.addEventListener('keydown', (event) => {
+    if (event.code === 'KeyZ') {
+      props.undo()
+      changeHistory(props.state)
+    }
+  })
+  let displayStyle = 'flex'
+  if (props.state.view.b === true) {
+     displayStyle = 'none'
+  } else {
+      displayStyle = 'flex' 
+  }
   return (
       <div className="App">
-        <div className="Main">
-          <div className='ButtonsPanel'>
-            <PresentationName/>
-            <LocalFileMenu/>
-            <SwitchSlide/>
-            <AddPrimitive/>           
-            <AddText/>
-            <AddPicture/>
+        <WorkAreaShow />
+        <div style={{display: displayStyle}}>
+          <div className="Main">
+            <ButtonsBlock/>
+            <WorkArea/>
           </div>
-          <WorkArea/>
+          <SlidesListButtons/>
+          <Slides/>
         </div>
-        <div className='SlidesListButtons'>
-          <AddSlide/>
-          <BackgroundImage/>
-          <DeleteSlides/>
-        </div>
-        <Slides/>
-      </div>
+      </div>  
     );
 }
 
-export default connect()(App)
+export default connect(mapStateToProps, mapDispatchToProps)(App)

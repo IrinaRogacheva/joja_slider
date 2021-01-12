@@ -1,6 +1,36 @@
-import {Presentation, Element, Slide, Size, Position} from '../entries/entries'
+import {Presentation, Element, Slide, Size, Position, ElementType, ImageElement, Primitive, Text, View} from '../entries/entries'
 import { v4 as uuidv4 } from 'uuid'
-       
+  
+function currentValues(view: View, e: Element): Element {
+    if (e.elementType === ElementType.primitive) {
+        return {
+            ...e,
+            id: uuidv4(),
+            primitiveBorderColor: view.primitiveBorderColor,
+            primitiveFillColor: view.primitiveFillColor
+        } as Primitive
+    }
+    else if (e.elementType === ElementType.text) {
+        return {
+            ...e,
+            id: uuidv4(),
+            textSize: view.textSize,
+            textFont: view.textFont,
+            textColor: view.textColor,
+            textAlign: view.textAlign,
+            textBold: view.textBold,
+            textItalic: view.textItalic,
+            textUnderline: view.textUnderline          
+        } as Text
+    }
+    else {
+        return {
+            ...e,
+            id: uuidv4()
+        } as ImageElement
+    }
+}
+
 function addElement(presentation: Presentation, element: Element): Presentation {
     const elementsArray = presentation.model.currentSlide.elements.slice()
     element = {
@@ -96,6 +126,39 @@ function selectElements(presentation: Presentation, elementsIdArray: Array<strin
     } as Presentation
 }
 
+function findElementById(presentation: Presentation, elemId: string): Element|null {
+    let elem: Element|null = null
+    const elementsArray = presentation.model.currentSlide.elements
+    for (let i = 0; i < elementsArray.length; i++) {
+        if(elementsArray[i].id === elemId)
+        {
+            elem = elementsArray[i]
+            break
+        }
+    }
+    return elem    
+}
+
+function AddInPresentationObject(presentation: Presentation, newView: View, slidesList: Array<Slide>, currentSlide: Slide, copyElements: Array<Element>, selectedElements: Array<string>): Presentation {
+    currentSlide.elements = copyElements
+    for (let i = 0; i < slidesList.length; i++) {
+        if(slidesList[i].id === currentSlide.id) {
+            slidesList[i] = currentSlide
+            break
+        }
+    }
+    return {
+        ...presentation,
+        model: {
+            ...presentation.model,
+            slidesList: slidesList,
+            currentSlide: currentSlide,
+            selectedElementsId: selectedElements
+        },
+        view: newView
+    } as Presentation
+}
+
 function changeSlideInSlidesList(presentation: Presentation, currentSlide: Slide): Array<Slide>
 {
     const copySlidesList: Array<Slide> = presentation.model.slidesList.slice()
@@ -118,10 +181,13 @@ function changeCurSlide(presentation: Presentation, elementsArray: Array<Element
 }
 
 export {
+    currentValues,
     addElement,
     deleteElement,
     moveElement,
     changeElementSize,
+    findElementById,
+    AddInPresentationObject,
     changeSlideInSlidesList,
     changeCurSlide,
     selectElements

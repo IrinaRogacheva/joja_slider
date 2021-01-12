@@ -83,18 +83,21 @@
 {
   background: url(./icons/icons8-заполненный-круг-50.png);
   background-size: 40px 40px;
+  align-items: "center";
 }
 
 .tr
 {
   background: url(./icons/icons8-треугольник-50.png);
   background-size: 40px 40px;
+  align-items: "center";
 }
 
 .kv
 {
   background: url(./icons/icons8-прямоугольник-50.png);
   background-size: 40px 40px;
+  align-items: "center";
 }
 
 .Text
@@ -121,6 +124,42 @@
   background-size: 40px 40px;
 }
 
+.AlgL
+{
+  background: url(./icons/icons8-выровнять-по-левому-краю-60.png);
+  background-size: 30px 30px;
+}
+
+.AlgC
+{
+  background: url(./icons/icons8-выровнять-по-центру-60.png);
+  background-size: 30px 30px;
+}
+
+.AlgR
+{
+  background: url(./icons/icons8-выровнять-по-правому-краю-60.png);
+  background-size: 30px 30px;
+}
+
+.Bld
+{
+  background: url(./icons/icons8-жирный-50.png);
+  background-size: 30px 30px;
+}
+
+.Itl
+{
+  background: url(./icons/icons8-курсив-50.png);
+  background-size: 30px 30px;
+}
+
+.Und
+{
+  background: url(./icons/icons8-подчеркивание-50.png);
+  background-size: 30px 30px;
+}
+
 .wrapper
 {
   position: relative;
@@ -144,6 +183,12 @@
   outline: none;
   transition: all 0.3s ease-out;
   border: none;
+  font-family: Tahoma;
+}
+
+.FileMenuButton:hover 
+{
+  background: rgb(255, 251, 188);
 }
 
 .FileMenu 
@@ -221,6 +266,32 @@
   cursor: auto;
 }
 
+.TextSize
+{
+  width: 50px;
+  height: 30px;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 20px;
+  background: none;
+  color: #fafaf9;
+  font-size: 20px;
+  font-family: Tahoma;
+  box-sizing: border-box;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.TextSize:hover
+{
+  cursor: pointer;
+}
+
+.TextSize:focus
+{
+  cursor: auto;
+}
+
 .WorkArea
 {
   margin-top: 50px;
@@ -250,7 +321,7 @@
   margin-left: 30px;
   margin-right: 30px;
   border: 4px;
-  border-color: #ffffff;
+  border-color: #fff;
   overflow-y: scroll;
   overflow-x: none;
   background: #1d1c18;
@@ -270,8 +341,6 @@
 
 .Slide
 {
-  width: 240px;
-  height: 140px;
   display: flex;
   margin-bottom: 20px;
   margin-left: 15px;
@@ -286,4 +355,127 @@ li
 p
 {
   margin: 0;
+}
+
+
+textarea
+{
+  overflow: hidden;
+  border: none;
+  min-width: 1px;
+  min-height: 1px;
+  resize: none;
+  background: none;
+  padding-left: 0px;
+}
+
+textarea:focus
+{
+  outline: none;
+}
+
+.IconRadio
+{
+  margin-top: 20px;
+  margin-left: 10px;
+  width: 30px;
+  height: 30px;
+  border: none;
+}
+
+input[type=radio]
+{
+  display: none;
+}
+
+input[type=checkbox]
+{
+  display: none;
+}
+
+input[type=radio]:focus
+{
+  filter: brightness(3)
+}
+
+input[type=checkbox]:focus
+{
+  filter: brightness(3)
+}
+
+input[type=radio]:checked + label
+{
+  filter: brightness(3)
+}
+
+input[type=checkbox]:checked + label
+{
+  filter: brightness(3)
+}
+
+.slideShow {
+  display: flex;
+  align-items: center;
+  align-content: space-between;
+  justify-content: center;
+  flex-direction: column;
+  transition: 'display 0.5s'
+}
+
+.show
+{
+  margin-top: 20px;
+  margin-left: 30px;
+  width: 40px;
+  height: 40px;
+  border: none;
+  opacity: .3
+}
+
+.show:focus
+{
+  outline: none;
+}
+
+.show:hover
+{
+  cursor: pointer;
+  opacity: 1
+}
+
+.next
+{
+  background: url(./icons/icons8-длинная-стрелка-вправо-50.png);
+  background-size: 40px 40px;
+}
+
+.prev
+{
+  background: url(./icons/icons8-длинная-стрелка-влево-50.png);
+  background-size: 40px 40px;  
+}
+
+.prevNext {
+  display: flex
+}
+
+.FileMenuButtonShow 
+{
+  position: relative;
+  width: 130px;
+  margin: 0 auto;
+  padding: 12px 15px;
+  background: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.3s ease-out;
+  border: none;
+  font-family: Tahoma;
+  font-size: 17px;
+}
+
+.FileMenuButtonShow:hover 
+{
+  background: rgb(255, 251, 188);
 }

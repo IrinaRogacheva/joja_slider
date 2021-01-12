@@ -7,7 +7,9 @@ export type {
     Position, 
     Primitive, 
     ImageElement,
-    ColorString
+    ColorString,
+    View,
+    History
 }
 
 export {ElementType, BackgroundType} 
@@ -29,7 +31,11 @@ type Text = Element & {
     textString: string,
     textSize: number,
     textFont: string,
-    textColor: string
+    textColor: string,
+    textAlign: string,
+    textBold: string,
+    textItalic: string,
+    textUnderline: string
 };
 
 enum BackgroundType {image, string}
@@ -76,12 +82,26 @@ type Model = {
 }
 
 type View = {
-    color: string,
+    textColor: string,
     textSize: number,
-    textFont: string
+    textFont: string,
+    textAlign: string,
+    textBold: string,
+    textItalic: string,
+    textUnderline: string,
+    primitiveBorderColor: string,
+    primitiveFillColor: string,
+    background: BackgroundType,
+    b: boolean
 }
 
 type Presentation = {
     model: Model,
     view: View
+}
+
+type History = {
+    stateHistory: Array<Presentation>,
+    b: boolean,
+    currentIndex: number
 }

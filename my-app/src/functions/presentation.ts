@@ -1,10 +1,14 @@
 import {Presentation} from '../entries/entries'
-import * as CONSTANTS from '../entries/constants'
+import {HISTORY} from '../entries/history'
+import {NEW_PRESENTATION} from '../constants/presentation'
 import { Dispatch } from 'react'
 import { OPEN_PRESENTATION } from '../store/actions'
 
-function createPresentation(presentation: Presentation): Presentation { 
-    return CONSTANTS.NEW_PRESENTATION
+function createPresentation(): Presentation { 
+    HISTORY.stateHistory = []
+    HISTORY.currentIndex = -1
+    HISTORY.b = true
+    return NEW_PRESENTATION
 } 
 
 function changePresentationName(presentation: Presentation, newName: string): Presentation { 
@@ -20,31 +24,19 @@ function openPresentation(newPr: Presentation): Presentation {
 }
 
 function openLocalPresentation(evt: React.ChangeEvent<HTMLInputElement>, dispatch: Dispatch<any>) {
-    console.log('vse ploho')
     let file = new FileReader() 
     if (evt.target.files != null) {
-     file.onload = function() {   
-     if (typeof(file.result) === 'string') {   
-        dispatch({type: OPEN_PRESENTATION, payload: JSON.parse(file.result) as Presentation})
-        console.log(JSON.parse(file.result))
-    }}
-    file.readAsText(evt.target.files[0]) 
- }
+        file.onload = function() {   
+            if (typeof(file.result) === 'string') {   
+                dispatch({type: OPEN_PRESENTATION, payload: JSON.parse(file.result) as Presentation})
+            }
+        }
+        file.readAsText(evt.target.files[0]) 
+    }
 }
- 
-//function openCloudPresentation(urlFile: string): Presentation {
-//    let presentation: Presentation
-//    return presentation
-//}
-
-/*function exportPresentation(presentation: Presentation): string {
-    let pdfFile: string
-    return pdfFile
-}*/
 
 function saveLocalPresentation(presentation: Presentation): void {
     const jsonFile = JSON.stringify(presentation) 
-    console.log(jsonFile)
     const jsonFileName = presentation.model.name + '.json'
     let file = new Blob([jsonFile], {type: 'json'})
     if (window.navigator.msSaveOrOpenBlob) {
@@ -63,24 +55,20 @@ function saveLocalPresentation(presentation: Presentation): void {
     }
 }
 
-/*function saveCloudPresentation(presentation: Presentation): string {
-    let urlFile: string
-    return urlFile
+function showStopPresentation(presentation: Presentation, b: boolean): Presentation {
+    return {
+        ...presentation, view: {
+            ...presentation.view, 
+            b: b
+        }
+    } 
 }
-
-function previewPresentation(presentation: Presentation): Array<Slide> {
-    let slideshow: Array<Slide> 
-    return slideshow
-}*/
 
 export {
     createPresentation,
     openLocalPresentation,
     openPresentation,
     changePresentationName,
-    //openCloudPresentation,
     saveLocalPresentation,
-    //saveCloudPresentation,
-    //exportPresentation,
-    //previewPresentation
+    showStopPresentation
 }
