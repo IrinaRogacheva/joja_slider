@@ -21,6 +21,7 @@ const mapStateToProps = (state: Presentation) => {
 
 const mapDispatchToProps = (dispatch: Dispatch<any>) => {
     return {
+        addText: (text: string) => dispatch({type: Action.ADD_TEXT, payload: text}),
         addPrimitiveCircle: () => dispatch({type: Action.ADD_PRIMITIVE_CIRCLE}),
         addPrimitiveRectangle: () => dispatch({type: Action.ADD_PRIMITIVE_RECTANGLE}),
         addPrimitiveTriangle: () => dispatch({type: Action.ADD_PRIMITIVE_TRIANGLE}),

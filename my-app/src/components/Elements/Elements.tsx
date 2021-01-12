@@ -1,5 +1,4 @@
 import {Element, ElementType, Primitive} from '../../entries/entries'
-import React from 'react'
 import { drawEllipse, drawRectangle, drawTriangle } from './drawPrimitive'
 import { drawText } from './drawText'
 import { drawImage } from './drawImage'
